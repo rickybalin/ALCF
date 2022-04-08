@@ -1,0 +1,49 @@
+#!/bin/bash
+
+PREFIX="$1"
+ENVNAME=ssim
+
+echo set the environment
+module purge
+module load PrgEnv-gnu
+module load cray-mpich
+module unload atp perftools-base cray-libsci
+#module unload craype-mic-knl
+module load miniconda-3/2021-07-28
+module load cmake/3.18.0
+export CRAYPE_LINK_TYPE=dynamic
+
+
+echo create the conda environment
+conda create -y -c conda-forge --prefix $PREFIX/$ENVNAME python=3.8 pip
+conda activate $PREFIX/$ENVNAME
+#conda install -y -c conda-forge pytorch=1.7.1
+conda install -y -c conda-forge matplotlib
+#conda install -y -c alcf-theta mpi4py
+conda install -y -c conda-forge git-lfs
+git lfs install
+
+echo install smartsim
+git clone https://github.com/CrayLabs/SmartSim.git --depth=1 --branch develop smartsim-develop
+cd smartsim-develop
+pip install -e .[dev,ml]
+smart build -v --device cpu
+cd ..
+
+echo install smartredis
+git clone https://github.com/CrayLabs/SmartRedis.git --depth=1 --branch v0.3.0 smartredis-0.3.0
+cd smartredis-0.3.0
+pip install -e .[dev]
+export CC=/opt/gcc/9.3.0/bin/gcc
+export CXX=/opt/gcc/9.3.0/bin/g++
+make deps
+make test-deps
+make lib
+cd ..
+
+# Test that the build worked
+echo Testing if the build was successful
+python -c 'import smartsim'
+python -c 'from smartsim import Experiment'
+python -c 'from smartredis import Client'
+
