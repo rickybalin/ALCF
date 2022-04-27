@@ -17,15 +17,14 @@ export CRAYPE_LINK_TYPE=dynamic
 echo create the conda environment
 conda create -y -c conda-forge --prefix $PREFIX/$ENVNAME python=3.8 pip
 conda activate $PREFIX/$ENVNAME
-#conda install -y -c conda-forge pytorch=1.7.1
 conda install -y -c conda-forge matplotlib
-#conda install -y -c alcf-theta mpi4py
 conda install -y -c conda-forge git-lfs
 git lfs install
 
 echo install smartsim
 git clone https://github.com/CrayLabs/SmartSim.git --depth=1 --branch develop smartsim-develop
 cd smartsim-develop
+export SMARTSIM_REDISAI=1.2.5
 pip install -e .[dev,ml]
 smart build -v --device cpu
 cd ..
