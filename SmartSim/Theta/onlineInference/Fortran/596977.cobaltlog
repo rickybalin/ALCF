@@ -1,0 +1,30 @@
+Jobid: 596977
+qsub -q debug-cache-quad -n 2 -t 30 -A datascience --attrs filesystems=theta-fs0 run.sh 64 2 1 1 2
+Wed Apr 27 18:13:53 2022 +0000 (UTC) submitted with cwd set to: /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/Theta/onlineInference/Fortran
+jobid 596977 submitted from terminal /dev/pts/5
+2022-04-27 18:14:54,114 INFO: Starting Resource_Prologue
+2022-04-27 18:14:54,116 DEBUG: no enabling attribute found
+2022-04-27 18:14:54,116 INFO: Resource_Prologue finished with exit code 0
+Wed Apr 27 18:15:19 2022 +0000 (UTC) 
+Wed Apr 27 18:15:19 2022 +0000 (UTC) Command: '/lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/Theta/onlineInference/Fortran/run.sh' '64' '2' '1' '1' '2'
+Wed Apr 27 18:15:19 2022 +0000 (UTC) 
+Wed Apr 27 18:15:19 2022 +0000 (UTC) Environment:
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_PARTCORES=64
+Wed Apr 27 18:15:19 2022 +0000 (UTC) SHELL=/bin/bash
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_PROJECT=datascience
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_PARTNAME=3824-3825
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_JOBID=596977
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_STARTTIME=1651083265
+Wed Apr 27 18:15:19 2022 +0000 (UTC) LOGNAME=balin
+Wed Apr 27 18:15:19 2022 +0000 (UTC) USER=balin
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_ENDTIME=1651085065
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_PARTSIZE=2
+Wed Apr 27 18:15:19 2022 +0000 (UTC) HOME=/home/balin
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_JOBSIZE=2
+Wed Apr 27 18:15:19 2022 +0000 (UTC) COBALT_QUEUE=debug-cache-quad
+Wed Apr 27 18:15:19 2022 +0000 (UTC) 
+Wed Apr 27 18:15:19 2022 +0000 (UTC) Info: stdin received from /dev/null
+Wed Apr 27 18:15:19 2022 +0000 (UTC) Info: stdout sent to /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/Theta/onlineInference/Fortran/596977.output
+Wed Apr 27 18:15:19 2022 +0000 (UTC) Info: stderr sent to /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/Theta/onlineInference/Fortran/596977.error
+Wed Apr 27 18:15:19 2022 +0000 (UTC) 
+Wed Apr 27 18:17:00 2022 +0000 (UTC) Info: task completed normally with an exit code of 0; initiating job cleanup and removal

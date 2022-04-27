@@ -1,0 +1,5 @@
+All SmartRedis clients initialized
+Uploaded model to Orchestrator
+Performed inference on all ranks for step 1
+Performed inference on all ranks for step 2
+Application 26221815 resources: utime ~2s, stime ~3s, Rss ~29080, inblocks ~121660, outblocks ~16

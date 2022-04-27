@@ -1,0 +1,13 @@
+ Initializing SmartRedis clients ... 
+ SmartSim clients initialized
+ Uploaded model to database
+ Sending inference data to database with key y.0 and shape           64           1
+ Finished sending inference data
+ Finished evaluating model
+ Finished retreiving predictions
+ Sending inference data to database with key y.0 and shape           64           1
+ Finished sending inference data
+ Finished evaluating model
+ Finished retreiving predictions
+ Exiting ... 
+Application 26221011 resources: utime ~5s, stime ~1s, Rss ~10292, inblocks ~7498, outblocks ~32

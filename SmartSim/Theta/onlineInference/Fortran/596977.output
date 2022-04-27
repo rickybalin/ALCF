@@ -1,0 +1,31 @@
+ppn 64
+nodes 2
+dbnodes 1
+simnodes 1
+simprocs 2
+
+Running on 2 total nodes on Theta
+['3824', '3825'] 
+
+Database running on 1 nodes:
+3824
+Simulatiom running on 1 nodes:
+3825
+Starting database ...
+Done
+
+Launching Fortran inference routine ...
+18:15:55 thetamom1 SmartSim[37684] INFO inference: New
+18:16:00 thetamom1 SmartSim[37684] INFO inference: Running
+18:16:05 thetamom1 SmartSim[37684] INFO inference: Running
+18:16:10 thetamom1 SmartSim[37684] INFO inference: Running
+18:16:15 thetamom1 SmartSim[37684] INFO inference: Running
+18:16:20 thetamom1 SmartSim[37684] INFO inference: Running
+18:16:25 thetamom1 SmartSim[37684] INFO inference: Running
+18:16:30 thetamom1 SmartSim[37684] INFO inference: Completed
+Done
+
+Stopping the Orchestrator ...
+18:16:30 thetamom1 SmartSim[37684] INFO Stopping model orchestrator_0 with job name orchestrator_0-CJL86YNTKOF3
+Done
+Quitting
