@@ -16,7 +16,7 @@ simprocs=2
 
 echo number of total nodes $nodes 
 echo time in minutes $runtime
-echo number of total processes $allprocs
+echo number of simulation processes $simprocs
 echo ppn  N $ppn
 echo queue $queue
  

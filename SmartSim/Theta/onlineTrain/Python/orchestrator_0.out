@@ -1,0 +1,41 @@
+----------   Running  Command   ---------- 
+
+COMMAND: /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/bin/redis-server /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/config/redis6.conf --loadmodule /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/lib/redisai.so --port 6780 --bind 10.128.0.4
+
+IPADDRESS: 10.128.0.4
+
+NETWORK: ipogif0
+
+------------------------------ 
+
+
+----------   Output   ---------- 
+
+
+26745:C 28 Apr 2022 20:39:38.679 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+26745:C 28 Apr 2022 20:39:38.680 # Redis version=6.0.8, bits=64, commit=03b59cd5, modified=0, pid=26745, just started
+26745:C 28 Apr 2022 20:39:38.680 # Configuration loaded
+                _._
+           _.-``__ ''-._
+      _.-``    `.  `_.  ''-._           Redis 6.0.8 (03b59cd5/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6780
+ |    `-._   `._    /     _.-'    |     PID: 26745
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           http://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
+
+26745:M 28 Apr 2022 20:39:38.788 # Server initialized
+26745:M 28 Apr 2022 20:39:38.788 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+26745:M 28 Apr 2022 20:39:38.898 * <ai> Redis version found by RedisAI: 6.0.8 - oss
+26745:M 28 Apr 2022 20:39:38.898 * <ai> RedisAI version 10203, git_sha=3f192ebd2bc874fb21cfdb3aff3bb0647df9b6ea
+26745:M 28 Apr 2022 20:39:38.899 * Module 'ai' loaded from /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/lib/redisai.so
+26745:M 28 Apr 2022 20:39:38.904 * Ready to accept connections

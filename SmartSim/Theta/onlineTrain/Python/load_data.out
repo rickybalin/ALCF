@@ -1,0 +1,34 @@
+All SmartRedis clients initialized
+Sent size info of training data to database
+Sending training data with key y.0.1 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.2 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.3 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.4 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.5 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.6 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.7 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.8 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.9 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.10 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.11 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.12 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.13 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.14 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.15 and shape (64, 2)
+All ranks finished sending training data
+Exiting ...
+Application 26236136 resources: utime ~90s, stime ~92s, Rss ~43360, inblocks ~183816, outblocks ~0

@@ -1,0 +1,247 @@
+
+Initializing Python clients ...
+
+Getting size info from DB ...
+
+
+Starting training loop ... 
+
+
+Getting new training data from DB ...
+Working on time step 2 
+
+
+ Epoch 1
+-------------------------------
+Training set: Average loss: 9.236136e+02
+
+ Epoch 2
+-------------------------------
+Training set: Average loss: 8.982444e+02
+
+Getting new training data from DB ...
+Working on time step 3 
+
+
+ Epoch 3
+-------------------------------
+Training set: Average loss: 9.241453e+02
+
+ Epoch 4
+-------------------------------
+Training set: Average loss: 6.704302e+02
+
+ Epoch 5
+-------------------------------
+Training set: Average loss: 2.388146e+02
+
+ Epoch 6
+-------------------------------
+Training set: Average loss: 5.230922e+01
+
+Getting new training data from DB ...
+Working on time step 4 
+
+
+ Epoch 7
+-------------------------------
+Training set: Average loss: 4.112606e+01
+
+ Epoch 8
+-------------------------------
+Training set: Average loss: 3.884838e+01
+
+ Epoch 9
+-------------------------------
+Training set: Average loss: 3.654854e+01
+
+ Epoch 10
+-------------------------------
+Training set: Average loss: 3.250261e+01
+
+Getting new training data from DB ...
+Working on time step 5 
+
+
+ Epoch 11
+-------------------------------
+Training set: Average loss: 3.260046e+01
+
+ Epoch 12
+-------------------------------
+Training set: Average loss: 2.673474e+01
+
+ Epoch 13
+-------------------------------
+Training set: Average loss: 2.252822e+01
+
+Getting new training data from DB ...
+Working on time step 6 
+
+
+ Epoch 14
+-------------------------------
+Training set: Average loss: 1.730140e+01
+
+ Epoch 15
+-------------------------------
+Training set: Average loss: 1.487951e+01
+
+ Epoch 16
+-------------------------------
+Training set: Average loss: 1.313822e+01
+
+ Epoch 17
+-------------------------------
+Training set: Average loss: 1.119814e+01
+
+Getting new training data from DB ...
+Working on time step 7 
+
+
+ Epoch 18
+-------------------------------
+Training set: Average loss: 9.648078e+00
+
+ Epoch 19
+-------------------------------
+Training set: Average loss: 8.535375e+00
+
+ Epoch 20
+-------------------------------
+Training set: Average loss: 7.096150e+00
+
+ Epoch 21
+-------------------------------
+Training set: Average loss: 6.457700e+00
+
+Getting new training data from DB ...
+Working on time step 8 
+
+
+ Epoch 22
+-------------------------------
+Training set: Average loss: 4.732032e+00
+
+ Epoch 23
+-------------------------------
+Training set: Average loss: 4.112398e+00
+
+ Epoch 24
+-------------------------------
+Training set: Average loss: 3.971460e+00
+
+Getting new training data from DB ...
+Working on time step 9 
+
+
+ Epoch 25
+-------------------------------
+Training set: Average loss: 3.424185e+00
+
+ Epoch 26
+-------------------------------
+Training set: Average loss: 3.355409e+00
+
+ Epoch 27
+-------------------------------
+Training set: Average loss: 2.757221e+00
+
+ Epoch 28
+-------------------------------
+Training set: Average loss: 2.698498e+00
+
+Getting new training data from DB ...
+Working on time step 10 
+
+
+ Epoch 29
+-------------------------------
+Training set: Average loss: 2.428536e+00
+
+ Epoch 30
+-------------------------------
+Training set: Average loss: 2.320678e+00
+
+ Epoch 31
+-------------------------------
+Training set: Average loss: 2.071442e+00
+
+Getting new training data from DB ...
+Working on time step 11 
+
+
+ Epoch 32
+-------------------------------
+Training set: Average loss: 2.364235e+00
+
+ Epoch 33
+-------------------------------
+Training set: Average loss: 2.204199e+00
+
+ Epoch 34
+-------------------------------
+Training set: Average loss: 1.997241e+00
+
+ Epoch 35
+-------------------------------
+Training set: Average loss: 2.077389e+00
+
+Getting new training data from DB ...
+Working on time step 12 
+
+
+ Epoch 36
+-------------------------------
+Training set: Average loss: 1.617742e+00
+
+ Epoch 37
+-------------------------------
+Training set: Average loss: 1.671831e+00
+
+ Epoch 38
+-------------------------------
+Training set: Average loss: 1.443197e+00
+
+ Epoch 39
+-------------------------------
+Training set: Average loss: 1.326846e+00
+
+Getting new training data from DB ...
+Working on time step 13 
+
+
+ Epoch 40
+-------------------------------
+Training set: Average loss: 1.450429e+00
+
+ Epoch 41
+-------------------------------
+Training set: Average loss: 1.352863e+00
+
+ Epoch 42
+-------------------------------
+Training set: Average loss: 1.205097e+00
+
+ Epoch 43
+-------------------------------
+Training set: Average loss: 1.114099e+00
+
+Getting new training data from DB ...
+Working on time step 14 
+
+
+ Epoch 44
+-------------------------------
+Training set: Average loss: 7.282647e-01
+Convergence tolerance met. Stopping training loop. 
+
+
+Saved model to disk
+
+Performing some predictions with the model 
+
+Telling data loader to quit ... 
+
+Exiting ...
+Application 26236137 resources: utime ~6762s, stime ~1539s, Rss ~133772, inblocks ~724052, outblocks ~208

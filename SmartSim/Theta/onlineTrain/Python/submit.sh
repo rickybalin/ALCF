@@ -9,10 +9,12 @@ filesystem=theta-fs0
 
 # args:
 dbnodes=1
-simnodes=1
-nodes=$(($dbnodes + $simnodes))
+simnodes=2
+mlnodes=1
+nodes=$(($dbnodes + $simnodes + $mlnodes))
 ppn=64 # cores per node
-simprocs=2
+simprocs=128
+mlprocs=64
 
 echo number of total nodes $nodes 
 echo time in minutes $runtime
@@ -20,7 +22,5 @@ echo number of simulation processes $simprocs
 echo ppn  N $ppn
 echo queue $queue
  
-qsub -I -q $queue -n $nodes -t $runtime -A $ChargeAccount --attrs filesystems=$filesystem
+qsub -q $queue -n $nodes -t $runtime -A $ChargeAccount --attrs filesystems=$filesystem run.sh $ppn $nodes $dbnodes $simnodes $mlnodes $simprocs $mlprocs
 
-# Then, from the MOM nodes, run
-#./run.sh 64 2 1 1 2
