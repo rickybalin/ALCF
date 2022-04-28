@@ -1,0 +1,189 @@
+129555:C 28 Apr 2022 14:20:15.189 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+189413:C 28 Apr 2022 14:20:15.189 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+129555:C 28 Apr 2022 14:20:15.195 # Redis version=6.0.8, bits=64, commit=03b59cd5, modified=0, pid=129555, just started
+189413:C 28 Apr 2022 14:20:15.249 # Redis version=6.0.8, bits=64, commit=03b59cd5, modified=0, pid=189413, just started
+129555:C 28 Apr 2022 14:20:15.262 # Configuration loaded
+189413:C 28 Apr 2022 14:20:15.269 # Configuration loaded
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.8 (03b59cd5/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6780
+ |    `-._   `._    /     _.-'    |     PID: 189413
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+189413:M 28 Apr 2022 14:20:15.404 # Server initialized
+189413:M 28 Apr 2022 14:20:15.406 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 6.0.8 (03b59cd5/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6780
+ |    `-._   `._    /     _.-'    |     PID: 129555
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+129555:M 28 Apr 2022 14:20:15.425 # Server initialized
+129555:M 28 Apr 2022 14:20:15.427 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+129555:M 28 Apr 2022 14:20:15.515 * <ai> Redis version found by RedisAI: 6.0.8 - oss
+129555:M 28 Apr 2022 14:20:15.516 * <ai> RedisAI version 10203, git_sha=3f192ebd2bc874fb21cfdb3aff3bb0647df9b6ea
+189413:M 28 Apr 2022 14:20:15.516 * <ai> Redis version found by RedisAI: 6.0.8 - oss
+129555:M 28 Apr 2022 14:20:15.520 * Module 'ai' loaded from /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/lib/redisai.so
+189413:M 28 Apr 2022 14:20:15.535 * <ai> RedisAI version 10203, git_sha=3f192ebd2bc874fb21cfdb3aff3bb0647df9b6ea
+189413:M 28 Apr 2022 14:20:15.552 * Module 'ai' loaded from /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/lib/redisai.so
+129555:M 28 Apr 2022 14:20:15.555 * Ready to accept connections
+189413:M 28 Apr 2022 14:20:15.560 * Ready to accept connections
+129555:M 28 Apr 2022 14:20:16.236 # <ai> AI.MODELSET command is deprecated and will not be available in future version, you can use AI.MODELSTORE instead
+189413:M 28 Apr 2022 14:20:16.252 # <ai> AI.MODELSET command is deprecated and will not be available in future version, you can use AI.MODELSTORE instead
+129555:M 28 Apr 2022 14:20:16.319 # <ai> backend TORCH not loaded, will try loading default backend
+189413:M 28 Apr 2022 14:20:16.332 # <ai> backend TORCH not loaded, will try loading default backend
+129555:M 28 Apr 2022 14:20:18.447 * <ai> TORCH backend loaded from /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/lib/backends/redisai_torch/redisai_torch.so
+189413:M 28 Apr 2022 14:20:18.456 * <ai> TORCH backend loaded from /lus/theta-fs0/projects/cfdml_aesp/balin/SmartSim/smartsim-develop/smartsim/_core/lib/backends/redisai_torch/redisai_torch.so
+129555:M 28 Apr 2022 14:20:28.623 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.632 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.634 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.636 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.638 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.640 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.642 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.644 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.646 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.647 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.649 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.647 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.652 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.687 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.694 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.703 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.710 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.719 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.726 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.736 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.743 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.763 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.773 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.783 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.790 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.800 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.807 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.816 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.824 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.832 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.841 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.849 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.858 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.871 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.883 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.897 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.908 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.922 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.933 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.947 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.958 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.966 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:28.974 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:28.987 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:29.000 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.013 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:29.024 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.039 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:29.059 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.067 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:29.080 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.092 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:29.109 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.117 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.132 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.134 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.136 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.138 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.139 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.141 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.143 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.151 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.153 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:29.155 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.175 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.177 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.176 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.180 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.248 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.259 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.270 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.285 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.296 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.310 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.331 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.342 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.355 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.366 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.379 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.391 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.404 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.416 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.430 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.441 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.455 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.465 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.478 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.490 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.504 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.530 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.542 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.554 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.566 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.579 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.591 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.603 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.616 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.628 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.640 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.654 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.677 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.687 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.696 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.703 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.712 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.720 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.729 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.739 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.745 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.754 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.762 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.771 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.780 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.787 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.795 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.804 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.812 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.820 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.829 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.837 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.845 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.854 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.861 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.870 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.879 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+189413:M 28 Apr 2022 14:20:39.888 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.908 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:M 28 Apr 2022 14:20:39.926 # <ai> AI.MODELRUN command is deprecated and will not be available in future version, you can use AI.MODELEXECUTE instead
+129555:signal-handler (1651155640) Received SIGTERM scheduling shutdown...

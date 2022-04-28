@@ -1,0 +1,19 @@
+ Initialized           64  MPI procs
+ Initializing SmartRedis clients ... 
+ SmartSim clients initialized
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::execute for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::execute for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::asList for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::asList for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+ Uploaded model to database from rank            0
+ Uploaded model to database from rank           32
+ Sending inference data to database with key y.0 and shape           64           1
+ Finished sending inference data
+ Finished evaluating model
+ Finished retreiving predictions
+ Sending inference data to database with key y.0 and shape           64           1
+ Finished sending inference data
+ Finished evaluating model
+ Finished retreiving predictions
+ Exiting ... 
+Application 26233172 resources: utime ~436s, stime ~36s, Rss ~28932, inblocks ~18482, outblocks ~80

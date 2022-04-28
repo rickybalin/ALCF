@@ -30,4 +30,4 @@
 The predictions made by the Python application will be in the `predictions.dat` file. Specifically, these are the predictions made by rank 0 of the application.
 The first column lists the x coordinate, the second column lists the predicted y values, the third column lists the true y values. 
 You can visualize these results with `gnuplot` if you ssh'ed into the Theta loging nodes with `ssh -X user@alcf.anl.gov`.
-You should expect to see decent agreement between the predictions and true values.
+You should expect to see fair agreement between the predictions and true values.

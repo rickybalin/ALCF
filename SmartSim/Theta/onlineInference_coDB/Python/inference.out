@@ -1,0 +1,12 @@
+All SmartRedis clients initialized
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::execute for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::execute for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::asList for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+[W OperatorEntry.cpp:111] Warning: Registering a kernel (registered by RegisterOperators) for operator redis::asList for dispatch key (catch all) that overwrote a previously registered kernel with the same dispatch key for the same operator. (function registerKernel)
+Uploaded model to database from rank 0
+Uploaded model to database from rank 32
+Performed inference on all ranks for step 1
+Performed inference on all ranks for step 2
+Exiting ...
+Application 26233625 exit signals: Killed
+Application 26233625 resources: utime ~111s, stime ~189s, Rss ~39052, inblocks ~224662, outblocks ~0
