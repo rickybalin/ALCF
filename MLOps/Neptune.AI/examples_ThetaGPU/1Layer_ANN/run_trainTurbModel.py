@@ -71,6 +71,9 @@ def main():
     run = neptune.init(
               project="rickybalin/testALCF",
               api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJhMjllYmRkMS1lMzI2LTQ0NzctOWE2MS05M2MwNzE2YzhhYzkifQ==",
+              custom_run_id='laptop-1',
+              name='laptop',
+              description='run on my laptop',
               source_files=["*.py"],
               )  # my credentials taken from the project I created on my Neptune account
 
