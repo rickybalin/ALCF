@@ -1,0 +1,10 @@
+number of nodes 2
+number of sim processes 64
+number of sim processes per node 32
+number of ML processes 16
+number of ML processes per node 8
+number of db processes per node 16
+CPU cores per node 64
+conda environment /projects/cfdml_aesp/balin/SmartSim_thetaGPU/ssim
+Network Offline, setting proxy envs
+python src/driver.py 2 64 64 32 16 8 16 cuda /var/tmp/cobalt.10080390

@@ -1,0 +1,30 @@
+Rank 0/16 says hello from node thetagpu23
+Rank 5/16 says hello from node thetagpu23
+Rank 4/16 says hello from node thetagpu23
+Rank 2/16 says hello from node thetagpu23
+Rank 3/16 says hello from node thetagpu23
+Rank 11/16 says hello from node thetagpu24
+Rank 1/16 says hello from node thetagpu23
+Rank 10/16 says hello from node thetagpu24
+Rank 7/16 says hello from node thetagpu23
+Rank 8/16 says hello from node thetagpu24
+Rank 15/16 says hello from node thetagpu24
+Rank 14/16 says hello from node thetagpu24
+Rank 9/16 says hello from node thetagpu24
+Rank 12/16 says hello from node thetagpu24
+Rank 13/16 says hello from node thetagpu24
+Rank 6/16 says hello from node thetagpu23
+
+Running with 1 DB nodes
+and with 8 processes per node 
+
+All SmartRedis clients initialized
+Sent size info of training data to database
+Sent size info of training data to database
+Sending training data with key y.0.1 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.2 and shape (64, 2)
+All ranks finished sending training data
+Sending training data with key y.0.3 and shape (64, 2)
+All ranks finished sending training data
+Exiting ...

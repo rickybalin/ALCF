@@ -1,0 +1,25 @@
+Jobid: 10080390
+qsub --mode script -A datascience -q bigmem -t 30 --attrs filesystems=theta-fs0,grand -n 2 submit.sh
+Fri Jun 03 21:13:41 2022 +0000 (UTC) submitted with cwd set to: /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/ThetaGPU/onlineTrain_coDB/Python
+jobid 10080390 submitted from terminal /dev/pts/1
+Fri Jun 03 21:13:59 2022 +0000 (UTC) 
+Fri Jun 03 21:14:00 2022 +0000 (UTC) Command: '/usr/bin/ssh' 'thetagpu23' '/usr/bin/cobalt-launcher.py' '--nf' '/var/tmp/cobalt.10080390' '--jobid' '10080390' '--cwd' '/lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/ThetaGPU/onlineTrain_coDB/Python' '--env' 'COBALT_JOBID=10080390' '/lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/ThetaGPU/onlineTrain_coDB/Python/submit.sh'
+Fri Jun 03 21:14:00 2022 +0000 (UTC) 
+Fri Jun 03 21:14:00 2022 +0000 (UTC) Environment:
+Fri Jun 03 21:14:00 2022 +0000 (UTC) SHELL=/bin/bash
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_NODEFILE=/tmp/tmpZKUrdM
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_PARTNAME=thetagpu23
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_JOBID=10080390
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_STARTTIME=1654290829
+Fri Jun 03 21:14:00 2022 +0000 (UTC) LOGNAME=balin
+Fri Jun 03 21:14:00 2022 +0000 (UTC) USER=balin
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_ENDTIME=1654292629
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_PARTSIZE=2
+Fri Jun 03 21:14:00 2022 +0000 (UTC) HOME=/home/balin
+Fri Jun 03 21:14:00 2022 +0000 (UTC) COBALT_JOBSIZE=2
+Fri Jun 03 21:14:00 2022 +0000 (UTC) 
+Fri Jun 03 21:14:00 2022 +0000 (UTC) Info: stdin received from /dev/null
+Fri Jun 03 21:14:00 2022 +0000 (UTC) Info: stdout sent to /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/ThetaGPU/onlineTrain_coDB/Python/10080390.output
+Fri Jun 03 21:14:00 2022 +0000 (UTC) Info: stderr sent to /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/ThetaGPU/onlineTrain_coDB/Python/10080390.error
+Fri Jun 03 21:14:00 2022 +0000 (UTC) 
+Fri Jun 03 21:14:24 2022 +0000 (UTC) Info: task completed normally with an exit code of 1; initiating job cleanup and removal
