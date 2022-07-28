@@ -1,0 +1,9 @@
+hello
+hello
+hello
+hello
+All SmartRedis clients initialized
+Uploaded model to database from rank 0
+Performed inference on all ranks for step 1
+Performed inference on all ranks for step 2
+Exiting ...

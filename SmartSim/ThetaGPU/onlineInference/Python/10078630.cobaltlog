@@ -1,0 +1,5 @@
+Jobid: 10078630
+qsub -M riccardo.balin@colorado.edu -I -q full-node -n 2 -t 60 -A datascience --attrs filesystems=theta-fs0
+Tue May 24 18:02:19 2022 +0000 (UTC) submitted with cwd set to: /lus/theta-fs0/projects/cfdml_aesp/balin/git-balin/ALCF/SmartSim/ThetaGPU/onlineInference/Python
+jobid 10078630 submitted from terminal /dev/pts/48
+Tue May 24 19:51:17 2022 +0000 (UTC) Info: user delete requested; removing job from the queue
