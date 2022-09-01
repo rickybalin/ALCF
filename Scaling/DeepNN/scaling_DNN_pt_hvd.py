@@ -1,4 +1,5 @@
 # General imports
+import sys
 import numpy as np
 from time import perf_counter
 import argparse
@@ -13,19 +14,24 @@ import horovod.torch as hvd
 
 ## Define the Neural Network Structure
 class NeuralNetwork(nn.Module):
-    def __init__(self, inputDim, outputDim, numNeurons):
+    def __init__(self, inputDim, outputDim, numNeurons, numLayers):
         super().__init__()
         self.ndIn = inputDim
         self.ndOut = outputDim
         self.nNeurons = numNeurons
-        self.net = nn.Sequential(
-            nn.Linear(self.ndIn, self.nNeurons),
-            nn.LeakyReLU(0.3),
-            nn.Linear(self.nNeurons, self.ndOut),
-        )
+        self.nLayers = numLayers
+        self.layers = nn.ModuleList()
+        self.layers.append(nn.Linear(self.ndIn, self.nNeurons)) # input layer
+        self.layers.append(nn.ReLU())
+        for l in range(self.nLayers): # hidden layers
+            self.layers.append(nn.Linear(self.nNeurons, self.nNeurons))
+            self.layers.append(nn.ReLU())
+        self.layers.append(nn.Linear(self.nNeurons, self.ndOut)) # output layers
 
     def forward(self, x):
-        return self.net(x)
+        for layer in self.layers:
+            x = layer(x)
+        return x
 
 
 ## Create Custom Dataset
@@ -101,8 +107,12 @@ def val_loop(dataloader, model, accFn, args, hrank):
 def trainNN(features, target, args, hrank, hsize):
     # Create an instance of the NN model
     model = NeuralNetwork(inputDim=args.nInputs, outputDim=args.nOutputs,
-                          numNeurons=args.nNeurons)
-    if (args.precision == 'double'):
+                          numNeurons=args.nNeurons, numLayers=args.nLayers)
+    model_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    if (hrank == 0): 
+        print(f'\nNumber of model trainable parameters: {model_params} \n')
+        sys.stdout.flush()
+    if (args.precision == 'fp64'):
         model.double()
     if (args.device != 'cpu'):
         model.to(args.device)
@@ -121,9 +131,9 @@ def trainNN(features, target, args, hrank, hsize):
     randGen = torch.Generator().manual_seed(randSeed)
 
     tmp = np.concatenate((target, features), axis=1)
-    if (args.precision == 'float'):
+    if (args.precision == 'fp32'):
         tmp = torch.tensor(tmp, dtype=torch.float32)
-    elif (args.precision == 'double'):
+    elif (args.precision == 'fp64'):
         tmp = torch.tensor(tmp, dtype=torch.float64)
     training_dataset = CustomDataset(tmp,args.nInputs,args.nOutputs)
     trainDataset, valDataset = torch.utils.data.random_split(training_dataset,
@@ -142,14 +152,19 @@ def trainNN(features, target, args, hrank, hsize):
     hvd.broadcast_parameters(model.state_dict(), root_rank=0)
     hvd.broadcast_optimizer_state(optimizer, root_rank=0)
     optimizer = hvd.DistributedOptimizer(optimizer,
-                                         named_parameters=model.named_parameters())
+                                         named_parameters=model.named_parameters(),
+                                         num_groups=1)
 
     # Train the NN
     t_train = 0.0
     t_val = 0.0
+    t_tp = 0.0
+    v_tp = 0.0
     for ep in range(args.nEpochs):
         if (hrank==0):
             print(f"\nEpoch {ep+1}\n-------------------------------")
+            sys.stdout.flush()
+
         # Train
         rtime = perf_counter()
         model, loss = train_loop(train_dataloader, model, lossFn,
@@ -157,10 +172,14 @@ def trainNN(features, target, args, hrank, hsize):
         rtime = perf_counter() - rtime
         if (ep>0):
             t_train = t_train + rtime
+            local_t_tp = nTrain/rtime
+            global_t_tp = sum_across_ranks(local_t_tp,'sum')
+            t_tp = t_tp + global_t_tp
             if (hrank==0):
-               print(f'loss: {loss}')
-               print(f'train throughput: {nTrain/rtime}')
-               print(f'train time: {rtime}')
+               print(f'average loss: {loss:.6e}')
+               print(f'[0]: train throughput: {local_t_tp:.6e}')
+               print(f'[0]: train time: {rtime:.6e}')
+               print(f'global train throughput: {global_t_tp:.6e}')
 
         # Validate
         rtime = perf_counter()
@@ -168,21 +187,33 @@ def trainNN(features, target, args, hrank, hsize):
         rtime = perf_counter() - rtime
         if (ep>0):
             t_val = t_val + rtime
+            local_v_tp = nVal/rtime
+            global_v_tp = sum_across_ranks(local_v_tp,'sum')
+            v_tp = v_tp + global_v_tp
             if (hrank==0):
-               print(f'accuracy: {acc}')
-               print(f'validation throughput: {nVal/rtime}')
-               print(f'validation time: {rtime}')
+               print(f'average accuracy: {acc:.6e}')
+               print(f'[0]: validation throughput: {local_v_tp:.6e}')
+               print(f'[0]: validation time: {rtime:.6e}')
+               print(f'global validation throughput: {global_v_tp:.6e}')
 
+        sys.stdout.flush()
         if (loss <= args.tolerance):
             break
 
-    return model, t_train, t_val
+    return model, t_train, t_val, t_tp, v_tp
 
 
 ## Average across hvd ranks
 def metric_average(val, name):
     tensor = torch.tensor(val)
     avg_tensor = hvd.allreduce(tensor, name=name, average=True)
+    return avg_tensor.item()
+
+
+## Sum across hvd ranks
+def sum_across_ranks(val, name):
+    tensor = torch.tensor(val)
+    avg_tensor = hvd.allreduce(tensor, name=name, average=False)
     return avg_tensor.item()
 
 
@@ -197,18 +228,20 @@ def main():
     # Print HVD Info
     print(f'Horovod: I am worker {hrank}/{hsize} and local worker {hrankl}')
     hvd.allreduce(torch.tensor(0), name='barrier')
+    sys.stdout.flush()
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--name',default='idk',help='Node being used')
     parser.add_argument('--device',default='cpu',help='Device to run on')
     parser.add_argument('--batch',default=64,type=int,help='Batch size')
-    parser.add_argument('--precision',default='float',help='Precision to be used for training and inference')
+    parser.add_argument('--precision',default='fp32',help='Precision to be used for training and inference')
     parser.add_argument('--tolerance',default=7.0e-5,help='Tolerance on loss function')
     parser.add_argument('--nEpochs',default=20,type=int,help='Number of epochs to train for')
     parser.add_argument('--learning_rate',default=0.001,help='Learning rate')
     parser.add_argument('--nSamples',default=100000,type=int,help='Number of training and inference samples')
     parser.add_argument('--nNeurons',default=20,type=int,help='Number of neurons in network layer')
+    parser.add_argument('--nLayers',default=2,type=int,help='Number of hidden layers in network')
     parser.add_argument('--nInputs',default=6,type=int,help='Number of model input features')
     parser.add_argument('--nOutputs',default=6,type=int,help='Number of model output targets')
     args = parser.parse_args()
@@ -223,6 +256,7 @@ def main():
             torch.cuda.set_device(hvd.local_rank())
     if (hrank==0):
         print(f'Running on device: {args.device}\n')
+        sys.stdout.flush()
 
     # Load the test data
     inputs = np.random.rand(args.nSamples,args.nInputs)
@@ -230,35 +264,39 @@ def main():
 
     # Train and output model
     t_start_train = perf_counter()
-    model, t_train, t_val = trainNN(inputs, outputs, args, hrank, hsize )
+    model, t_train, t_val, tp_t, tp_v = trainNN(inputs, outputs, args, hrank, hsize )
     t_end_train = perf_counter()
 
     # End timer for entire program
     t_end = perf_counter()
 
-    # Print some timing information
+    # Print some performance information
     t_run = t_end - t_start
     t_run_ave = metric_average(t_run,'average')
     t_train_tot = t_end_train - t_start_train
     t_train_tot_ave = metric_average(t_train_tot,'average')
-    tp_train_tot = args.nSamples*args.nEpochs/t_train_tot
-    tp_train_tot_ave = metric_average(tp_train_tot,'average')
-    tp_train = args.nSamples*0.75*(args.nEpochs-1)/t_train
-    tp_train_ave = metric_average(tp_train,'average')
-    tp_val = args.nSamples*0.25*(args.nEpochs-1)/t_val
-    tp_val_ave = metric_average(tp_val,'average')
     t_train_ave = metric_average(t_train,'average')
     t_val_ave = metric_average(t_val,'average')
+
+    tp_train_tot = args.nSamples*args.nEpochs*hsize/t_train_tot_ave
+    tp_train_global = tp_t/(args.nEpochs-1)
+    tp_val_global = tp_v/(args.nEpochs-1)
+    #tp_train = args.nSamples*0.75*(args.nEpochs-1)/t_train
+    #tp_train_ave = metric_average(tp_train,'average')
+    #tp_val = args.nSamples*0.25*(args.nEpochs-1)/t_val
+    #tp_val_ave = metric_average(tp_val,'average')
     if (hrank==0):
         print("\nPerformance info (average across ranks):")
-        print(f"Total run time: {t_run_ave}")
-        print(f"Total train time: {t_train_tot_ave}")
-        print(f"Total train loop time: {t_train_ave}")
-        print(f"Total validation loop time: {t_val_ave}")
-        print(f"Throughput based on total train time: {tp_train_tot_ave}")
-        print(f"Throughput based on total train loop time: {tp_train_ave}")
-        print(f"Throughput based on total val loop time: {tp_val_ave}")
-
+        print(f"Total run time: {t_run_ave:.6e}")
+        print(f"Total train time: {t_train_tot_ave:.6e}")
+        print(f"Total train loop time: {t_train_ave:.6e}")
+        print(f"Total validation loop time: {t_val_ave:.6e}")
+        print(f"Global throughput based on total train time: {tp_train_tot:.6e}")
+        print(f"Global train loop throughput: {tp_train_global:.6e}")
+        print(f"Global validation loop throughput: {tp_val_global:.6e}")
+        #print(f"Throughput based on total train loop time: {tp_train_ave}")
+        #print(f"Throughput based on total val loop time: {tp_val_ave}")
+        sys.stdout.flush()
 
 
 
