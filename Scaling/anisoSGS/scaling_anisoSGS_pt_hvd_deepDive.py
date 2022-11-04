@@ -3,6 +3,7 @@ import sys
 import numpy as np
 from time import perf_counter
 import argparse
+import logging
 from math import floor
 import torch
 import torch.nn as nn
@@ -11,6 +12,17 @@ import torch.optim as optim
 
 # Horovod
 import horovod.torch as hvd
+
+## Set up logger
+def setup_logger(name, log_file, level=logging.INFO):
+    """To setup as many loggers as you want"""
+    handler = logging.FileHandler(log_file,mode='w')
+    formatter = logging.Formatter('%(message)s')
+    handler.setFormatter(formatter)
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    logger.addHandler(handler)
+    return logger
 
 ## Define the Neural Network Structure
 class NeuralNetwork(nn.Module):
@@ -47,7 +59,7 @@ class CustomDataset(Dataset):
 
 ## Define the Training and Validation/Testing Loops
 # Training Loop
-def train_loop(dataloader, model, lossFn, optimizer, args, hrank):
+def train_loop(dataloader, model, lossFn, optimizer, args, hrank, logger_perf):
     model.train() # set model to training mode
     num_batches = len(dataloader)
 
@@ -60,11 +72,20 @@ def train_loop(dataloader, model, lossFn, optimizer, args, hrank):
             y = y.to(args.device)
 
         # Forward and backward pass
+        tic = perf_counter()
         optimizer.zero_grad()
         pred = model(X)
         loss = lossFn(pred, y)
         loss.backward()
+        toc = perf_counter()
+        t_comp = toc - tic
+
+        tic = perf_counter()
         optimizer.step()
+        toc = perf_counter()
+        t_step = toc - tic
+
+        logger_perf.info('%.8e %.8e',t_comp,t_step)
 
         totalLoss += loss.item()
 
@@ -99,7 +120,7 @@ def val_loop(dataloader, model, accFn, args, hrank):
 
 
 ## Define the Training Driver function
-def trainNN(features, target, args, hrank, hsize):
+def trainNN(features, target, args, hrank, hsize, logger_perf):
     # Create an instance of the NN model
     model = NeuralNetwork(inputDim=args.nInputs, outputDim=args.nOutputs,
                           numNeurons=args.nNeurons)
@@ -158,7 +179,7 @@ def trainNN(features, target, args, hrank, hsize):
         # Train
         rtime = perf_counter()
         model, loss = train_loop(train_dataloader, model, lossFn,
-                                 optimizer, args, hrank)
+                                 optimizer, args, hrank, logger_perf )
         rtime = perf_counter() - rtime
         if (ep>0):
             t_train = t_train + rtime
@@ -242,6 +263,9 @@ def main():
        print(f'\nIntra-op threads: {torch.get_num_threads()}') # intra-op
        print(f'Inter-op threads: {torch.get_num_interop_threads()}\n') #inter-op
 
+    # Start logger
+    logger_perf = setup_logger('info', f'dataPar_perf_{hrank}.log')
+
     # Start timer for entire program
     t_start = perf_counter()
 
@@ -263,7 +287,8 @@ def main():
 
     # Train and output model
     t_start_train = perf_counter()
-    model, t_train, t_val, tp_t, tp_v = trainNN(inputs, outputs, args, hrank, hsize )
+    model, t_train, t_val, tp_t, tp_v = trainNN(inputs, outputs, args, hrank, hsize,
+                                                logger_perf)
     t_end_train = perf_counter()
 
     # End timer for entire program

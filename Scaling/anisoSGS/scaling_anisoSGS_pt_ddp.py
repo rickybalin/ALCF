@@ -175,7 +175,6 @@ def trainNN(features, target, args, comm, rank, size):
                                 [nTrain, nVal], generator=randGen)
 
     # Data parallel loader
-    torch.set_num_threads(size)
     train_sampler = torch.utils.data.distributed.DistributedSampler(
                            trainDataset, num_replicas=size, rank=rank)
     train_dataloader = DataLoader(trainDataset, batch_size=args.batch,
@@ -285,6 +284,13 @@ def main():
     else:
         print(f"MPI4PY: Hello from rank {rank}/{size}")
     sys.stdout.flush()
+
+    # Get/Set inter and intra op threads
+    torch.set_num_threads(1)
+    #torch.set_num_interop_threads(1)
+    if (rank==0):
+       print(f'\nIntra-op threads: {torch.get_num_threads()}') # intra-op
+       print(f'Inter-op threads: {torch.get_num_interop_threads()}\n') #inter-op
 
     # Start timer for entire program
     t_start = perf_counter()
