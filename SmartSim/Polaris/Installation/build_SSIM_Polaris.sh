@@ -18,7 +18,7 @@ export CC=cc
 export CXX=CC
 
 ## Clone and install SmartSim
-git clone -b redisai_upgrade https://github.com/ashao/SmartSim.git
+git clone https://github.com/rickybalin/SmartSim.git
 cd SmartSim
 pip install -e .[ml] # The [ml] extension installs TensorFlow 2.8
 cd ..
@@ -29,19 +29,10 @@ export CUDNN_INCLUDE_DIR=/soft/libraries/cudnn/cudnn-11.5-linux-x64-v8.3.3.40/in
 export LD_LIBRARY_PATH=$CUDNN_LIBRARY:$LD_LIBRARY_PATH
 cd SmartSim
 # This installs torch==1.11.0+cu113 torchvision==0.12.0+cu113 -f https://download.pytorch.org/whl/torch_stable.html
-smart build -v --device gpu | tee build.log
+smart build -v --device gpu | tee build_backend.log
 # Upgrate CUDA lib version to 11.5 so it is compatible with CUDA needed for HVD build
 pip install torch==1.11.0+cu115 torchvision==0.12.0+cu115 -f https://download.pytorch.org/whl/torch_stable.html
 cd ..
-
-## Changes to source code for Polaris (these will be part of SmartSim repo soon)
-cd SmartSim/smartsim
-SSIM_SAFE=/lus/eagle/projects/SDL_Workshop/SmartSim/SmartSim_Polaris_source
-cp $SSIM_SAFE/smartsim/database/orchestrator.py database/orchestrator.py
-cp $SSIM_SAFE/smartsim/settings/mpirunSettings.py settings/mpirunSettings.py
-cp $SSIM_SAFE/smartsim/_core/launcher/step/mpirunStep.py _core/launcher/step/mpirunStep.py
-cp $SSIM_SAFE/smartsim/_core/launcher/pbs/pbsLauncher.py _core/launcher/pbs/pbsLauncher.py
-cd ../..
 
 ## Install SmartRedis Client Library
 git clone https://github.com/CrayLabs/SmartRedis.git
