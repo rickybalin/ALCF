@@ -1,0 +1,25 @@
+database:
+    launch: "colocated"
+run_args:
+    nodes: 1
+    db_nNodes: 1
+    sim_nNodes: 1
+    cores_pn: 32
+    simprocs: 8
+    simprocs_pn: 8
+    dbprocs_pn: 4
+    device: "cuda"
+    cpu_bind: "none"
+    network_interface: "lo"
+experiment:
+    port: 6780
+    name: "inference-example"
+    launcher: "pbs"
+    executable: "./src/inference.py"
+model:
+    path: "./model_jit.pt"
+    backend: "TORCH"
+    device: "gpu"
+    batch: 0
+    devices_per_node: 1
+logging: "no" 

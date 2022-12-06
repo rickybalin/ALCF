@@ -1,0 +1,53 @@
+# Database config
+database:
+    # colocated, clustered
+    launch: "colocated"
+
+# Run config
+run_args:
+    # any value
+    nodes: 1
+    # any value for clustered, 1 for colocated
+    db_nNodes: 1
+    # any value for clustered, 1 for colocated
+    sim_nNodes: 1
+    # machine specific, 32 for Polaris 48 for ThetaGPU
+    cores_pn: 32
+    # any number
+    simprocs: 8
+    # any number up to limits of CPU
+    simprocs_pn: 8
+    # any number up to limits of CPU
+    dbprocs_pn: 4
+    # Training only: cuda, cpu
+    device: "cuda"
+    # Polaris: none, core, list
+    cpu_bind: "none"
+    # Polaris: lo, hsn0
+    # Cannot use lo for clustered
+    network_interface: "lo"
+
+# Experiment config
+experiment:
+    port: 6780
+    name: "inference-example"
+    # pbs, cobalt
+    launcher: "pbs"
+    executable: "./src/inference.py"
+
+# Model Inference config
+model:
+    path: "./model_jit.pt"
+    backend: "TORCH"
+    # cpu, gpu
+    device: "cpu"
+    # 0 - simprocs for clustered
+    # 0 - simprocs_pn for colocated
+    batch: 0
+    # 1 - number of GPUs available for inference
+    # 1 if device=cpu
+    devices_per_node: 1
+
+# Logging config
+# no, fom, verbose. Set to fom for optimization
+logging: "no" 
