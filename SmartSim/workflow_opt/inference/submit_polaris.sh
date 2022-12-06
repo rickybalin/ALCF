@@ -26,6 +26,7 @@ python $DRIVER
 
 # Handle output
 if [ "$logging" = "verbose" ]; then
-    mkdir $PBS_JOBID
-    mv *.log $PBS_JOBID
+    JOB_ID=$(echo $PBS_JOBID | awk '{split($1,a,"."); print a[1]}')
+    mkdir $JOBID
+    mv *.log $JOBID
 fi
