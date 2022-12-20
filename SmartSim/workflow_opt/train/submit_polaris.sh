@@ -1,13 +1,14 @@
 #!/bin/bash -l
 #PBS -S /bin/bash
-#PBS -N inf_coDB
+#PBS -N train_coDB
 #PBS -l walltime=00:30:00
-#PBS -l select=1:ncpus=64:ngpus=4
+#PBS -l select=2:ncpus=64:ngpus=4
 #PBS -l filesystems=eagle:grand:home
 #PBS -k doe
 #PBS -j oe
 #PBS -A cfdml_aesp
-#PBS -q debug-scaling
+##PBS -q debug
+#PBS -q preemptable
 #PBS -V
 
 DRIVER=src/driver_polaris.py
@@ -31,5 +32,5 @@ JOBID=$(echo $PBS_JOBID | awk '{split($1,a,"."); print a[1]}')
 if [ $LOGGING = "verbose" ] || [ $LOGGING = "verbose-perf" ]; then
     mkdir $JOBID
     mv *.log $JOBID
-    mv inference.* $JOBID
+    mv load_data.* train_model.* $JOBID
 fi

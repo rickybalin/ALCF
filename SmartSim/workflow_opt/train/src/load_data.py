@@ -1,8 +1,10 @@
 import sys
+import os
 import argparse
 from time import sleep, perf_counter
 import numpy as np
 import logging
+from math import floor
 from smartredis import Client
 
 def setup_logger(name, log_file, level=logging.INFO):
@@ -43,19 +45,21 @@ def main():
     # Parse arguments
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--dbnodes',default=1,type=int,help='Number of database nodes')
-    parser.add_argument('--device',default='cpu',help='Device to run on')
-    parser.add_argument('--ppn',default=2,type=int,help='Number of processes per node')
+    parser.add_argument('--ppn',default=4,type=int,help='Number of processes per node')
     parser.add_argument('--logging',default='no',help='Level of performance logging')
     args = parser.parse_args()
 
     # Create log files
+    t_meta = 0.
     if (args.logging=='verbose'):
         logger_init = setup_logger('client_init', f'client_init_{rank}.log')
-        logger_inf = setup_logger('inference', f'inference_{rank}.log')
+        logger_meta = setup_logger('meta', f'meta_data_{rank}.log')
+        logger_data = setup_logger('train_data', f'train_data_{rank}.log')
     elif (args.logging=='verbose-perf'):
         if (rank==0):
             logger_init = setup_logger('client_init', 'client_init.log')
-            logger_inf = setup_logger('inference', 'inference.log')
+            logger_meta = setup_logger('meta', 'meta_data.log')
+            logger_data = setup_logger('train_data', 'train_data.log')
             logger_loop = setup_logger('main-loop', 'loop.log')
         else:
             logger_init = None
@@ -73,96 +77,100 @@ def main():
     if (rank==0):
         print('All SmartRedis clients initialized')
         sys.stdout.flush()
-
-    # Load model onto Orchestrator
-    # (Already loaded in driver but keeping this here for now)
-    #tic = 0.; toc = 0.
-    #if (rank%args.ppn == 0):
-    #    device_tag = 'CPU' if args.device=='cpu' else 'GPU'
-    #    tic = perf_counter()
-    #    client.set_model_from_file('model', './model_jit.pt', 'TORCH', device=device_tag)
-    #    toc = perf_counter()
-    #    print(f'Uploaded model to database {device_tag} from rank {rank}')
-    #if (args.logging=='verbose'):
-    #    logger_model.info('%.8e',toc-tic)
-    #comm.Barrier()
-    #sys.stdout.flush()
-
+    if ((rank%args.ppn) == 0):
+        SSDB = os.getenv('SSDB')
+        f = open(f'SSDB_{name}.dat', 'w')
+        f.write(f'{SSDB}')
+        f.close()
+    
     # Set parameters for array of random numbers to be set as inference data
     # In this example we create inference data for a simple function
     # y=f(x), which has 1 input (x) and 1 output (y)
     # The domain for the function is from 0 to 10
     # The inference data is obtained from a uniform distribution over the domain
     nSamples = 20000
-    rank_fact = rank/args.ppn
-    if (rank_fact<1):
-        xmin = 0.0 
-        xmax = 5.0
-    elif (rank_fact>=1):
-        xmin = 5.0
-        xmax = 10.0
+    xmin = 0.0 
+    xmax = 10.0
+    nInputs = 1
+    nOutputs = 1
 
-    # Generate the key for the inference data
-    # The key will be tagged with the rank ID
-    inf_key = 'x.'+str(rank)
-    pred_key = 'p.'+str(rank)
+    # Send array used to communicate whether to keep running data loader or ML
+    if ((rank%args.ppn) == 0):
+        arrMLrun = np.array([1, 1])
+        tic = perf_counter()
+        client.put_tensor('check-run', arrMLrun)
+        toc = perf_counter()
+        t_meta = t_meta + (toc - tic)
 
-    # Open file to write predictions
-    if (args.logging!='verbose-perf' or args.logging!='fom'):
-        if (rank%args.ppn==0):
-            fname = f'./predictions_node{rank//args.ppn+1}.dat'
-            fid = open(fname, 'w')
+    # Send some information regarding the training data size
+    if ((rank%args.ppn) == 0):
+        arrInfo = np.array([nSamples, nInputs+nOutputs, nInputs,
+                            size, args.ppn, rank])
+        tic = perf_counter()
+        client.put_tensor('sizeInfo', arrInfo)
+        toc = perf_counter()
+        t_meta = t_meta + (toc - tic)
+        print(f'[{rank}]: Sent size info of training data to database')
+        sys.stdout.flush()
 
     # Emulate integration of PDEs with a do loop
-    numts = 40
-    t_inf = np.empty([numts,3])
+    if (rank==0):
+        print('Starting computation loop ...')
+        sys.stdout.flush()
+    numts = 1000
+    stepInfo = np.zeros(2, dtype=int)
+    t_train = np.zeros([numts,])
     tic_l = perf_counter()
     for its in range(numts):
-        # Generate the input data for the polynomial y=f(x)=x**2 + 3*x + 1
-        inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
+        # Need to sleep a few sec or this loop is too fast
+        sleep(0.5)
 
-        # Perform inferece
-        tic_s = perf_counter()
-        client.put_tensor(inf_key, inputs)
-        toc_s = perf_counter()
-        tic_i = perf_counter()
-        client.run_model('model', inputs=[inf_key], outputs=[pred_key])
-        toc_i = perf_counter()
-        tic_r = perf_counter()
-        predictions = client.get_tensor(pred_key)
-        toc_r = perf_counter()
-        t_inf[its,0] = toc_s - tic_s
-        t_inf[its,1] = toc_i - tic_i
-        t_inf[its,2] = toc_r - tic_r
-        
-        # Print info to stdout
-        if (args.logging!='verbose-perf' or args.logging!='fom'):
+        # First off check if ML is done training, if so exit from loop
+        tic = perf_counter()
+        arrMLrun = client.get_tensor('check-run')
+        toc = perf_counter()
+        t_meta = t_meta + (toc - tic)
+        if (arrMLrun[0]<0.5):
+            break
+
+        # Generate the training data for the polynomial y=f(x)=x**2 + 3*x + 1
+        # place output in first column and input in second column
+        inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
+        outputs = inputs**2 + 3*inputs + 1
+        sendArr = np.concatenate((outputs, inputs), axis=1)
+
+        # Send training data to database
+        send_key = 'y.'+str(rank)+'.'+str(its+1)
+        if (rank==0 and args.logging!='verbose-collect'):
+            print(f'Sending training data with key {send_key} and shape {sendArr.shape}')
+        tic = perf_counter()
+        client.put_tensor(send_key, sendArr)
+        toc = perf_counter()
+        t_train[its] = toc - tic
+
+        if (args.logging!='verbose-perf'):
             comm.Barrier()
             if (rank==0):
-                print(f'Performed inference on all ranks for step {its+1}')
+                print(f'All ranks finished sending training data')
                 sys.stdout.flush()
         
-        # Print timings with old (not performant) approach
         if (args.logging=='verbose'):
-            logger_inf.info('%.8e %.8e %.8e',toc_s-tic_s,toc_i-tic_i,toc_r-tic_r)
+            logger_data.info('%.8e',t_train[its])
 
-        # Write predictions to file
-        if (args.logging!='fom' or args.logging!='verbose-perf'):
-            if (rank%args.ppn==0):
-                truth = inputs**2 + 3*inputs + 1
-                for i in range(nSamples):
-                    fid.write(f'{inputs[i,0]:.6e} {predictions[i,0]:.6e} {truth[i,0]:.6e}\n')
-    
+        # Send the time step number, used by ML program to determine
+        # when new data is available
+        if ((rank%args.ppn) == 0):
+            stepInfo[0] = int(its+1)
+            tic = perf_counter()
+            client.put_tensor('step', stepInfo)
+            toc = perf_counter()
+            t_meta = t_meta + (toc - tic)
+
     toc_l = perf_counter()
     t_loop = toc_l - tic_l
 
-    # Compute FOM
-    fom = (t_loop) / numts
-    if (args.logging=='fom'):
-        fom_avg = comm.allreduce(fom, op=MPI.SUM)
-        fom_avg = fom_avg / size
-        if (rank==0):
-            logger_fom.info('%.8e',fom_avg)
+    if (args.logging=='verbose'):
+        logger_meta.info('%.8e',t_meta)
 
     # Collect performance statistics
     if (args.logging=='verbose-perf'):
@@ -170,29 +178,26 @@ def main():
             print('Collecting performance stats ... ')
             sys.stdout.flush()
         t_init_gather = None
-        t_model_gather = None
-        t_inf_gather = None
+        t_meta_gather = None
+        t_train_gather = None
         t_loop_gather = None
         if (rank==0):
             t_init_gather = np.empty([size])
-            t_model_gather = np.empty([size])
-            t_inf_gather = np.empty([size,numts,3])
+            t_meta_gather = np.empty([size])
+            t_train_gather = np.empty([size,numts])
             t_loop_gather = np.empty([size])
         comm.Gather(np.array(t_init),t_init_gather,root=0)
-        comm.Gather(np.array(t_model),t_model_gather,root=0)
-        comm.Gather(t_inf,t_inf_gather,root=0)
+        comm.Gather(np.array(t_meta),t_meta_gather,root=0)
+        comm.Gather(t_train,t_train_gather,root=0)
         comm.Gather(np.array(t_loop),t_loop_gather,root=0)
+        its = floor(its/10)*10
         if (rank==0):
             for ir in range(size):
                 logger_init.info('%.8e',t_init_gather[ir])
-                logger_model.info('%.8e',t_model_gather[ir])
+                logger_meta.info('%.8e',t_meta_gather[ir])
                 logger_loop.info('%.8e',t_loop_gather[ir])
-                for its in range(numts):
-                    logger_inf.info('%.8e %.8e %.8e',t_inf_gather[ir,its,0],
-                                     t_inf_gather[ir,its,1],t_inf_gather[ir,its,2])
-    
-    if (rank%args.ppn==0):
-        fid.close()
+                for i in range(its):
+                    logger_data.info('%.8e',t_train_gather[ir,i])
 
     # Exit
     if (rank==0):
