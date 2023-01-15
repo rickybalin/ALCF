@@ -6,7 +6,7 @@ import hydra
 
 # smartsim and smartredis imports
 from smartsim import Experiment
-from smartsim.settings import MpiexecSettings
+from smartsim.settings import PalsMpiexecSettings
 
 
 ## Define function to parse node list
@@ -27,14 +27,14 @@ def launch_coDB(cfg, nodelist, nNodes):
     hosts = ','.join(nodelist)
 
     # Initialize the SmartSim Experiment
-    PORT = cfg.experiment.port
+    PORT = cfg.database.port
     exp = Experiment(cfg.experiment.name, launcher=cfg.experiment.launcher)
 
     # Set the run settings, including the Python executable and how to run it
     Py_exe = cfg.sim.executable
     exe_args = Py_exe + f' --dbnodes 1 --device {cfg.sim.device}' \
                       + f' --ppn {cfg.run_args.simprocs_pn} --logging {cfg.logging}'
-    run_settings = MpiexecSettings(
+    run_settings = PalsMpiexecSettings(
                    'python',
                    exe_args=exe_args,
                    run_args=None,
@@ -43,7 +43,7 @@ def launch_coDB(cfg, nodelist, nNodes):
     run_settings.set_tasks(cfg.run_args.simprocs)
     run_settings.set_tasks_per_node(cfg.run_args.simprocs_pn)
     run_settings.set_hostlist(hosts)
-    run_settings.set_cpu_binding_type(cfg.run_args.cpu_bind)
+    run_settings.set_cpu_binding_type(cfg.run_args.sim_cpu_bind)
 
     # Create the co-located database model
     colo_model = exp.create_model("inference", run_settings)
@@ -116,7 +116,7 @@ def launch_clDB(cfg, nodelist, nNodes):
                       + f' --device {cfg.sim.device}' \
                       + f' --ppn {cfg.run_args.simprocs}' \
                       + f' --logging {cfg.logging}'
-    run_settings = MpiexecSettings('python',
+    run_settings = PalsMpiexecSettings('python',
                   exe_args=exe_args,
                   run_args=None
                   )

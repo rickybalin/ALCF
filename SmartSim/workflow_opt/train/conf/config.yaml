@@ -25,9 +25,9 @@ run_args:
     dbprocs_pn: 4
     # Training only: cuda, cpu
     device: "cuda"
-    # Polaris: none, core, list
+    # Polaris: none, core, list, numa
     sim_cpu_bind: "none"
-    # Polaris: none, core, list
+    # Polaris: none, core, list, numa
     ml_cpu_bind: "none"
     # Polaris: lo, hsn0
     # Cannot use lo for clustered

@@ -2,6 +2,7 @@ import sys
 import argparse
 from time import sleep, perf_counter
 import numpy as np
+import cupy as cp
 import logging
 from smartredis import Client
 
@@ -119,10 +120,15 @@ def main():
     tic_l = perf_counter()
     for its in range(numts):
         # Generate the input data for the polynomial y=f(x)=x**2 + 3*x + 1
-        inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
+        if (args.device=='cpu'):
+            inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
+        elif (args.device=='cuda'):
+            inputs_gpu = cp.random.uniform(low=xmin, high=xmax, size=(nSamples,1), dtype=np.double)
 
         # Perform inferece
         tic_s = perf_counter()
+        if (args.device=='cuda'):
+            inputs = cp.asnumpy(inputs_gpu)
         client.put_tensor(inf_key, inputs)
         toc_s = perf_counter()
         tic_i = perf_counter()
@@ -130,6 +136,8 @@ def main():
         toc_i = perf_counter()
         tic_r = perf_counter()
         predictions = client.get_tensor(pred_key)
+        if (args.device=='cuda'):
+            predictions_gpu = cp.asarray(predictions)
         toc_r = perf_counter()
         t_inf[its,0] = toc_s - tic_s
         t_inf[its,1] = toc_i - tic_i
@@ -170,22 +178,22 @@ def main():
             print('Collecting performance stats ... ')
             sys.stdout.flush()
         t_init_gather = None
-        t_model_gather = None
+        #t_model_gather = None
         t_inf_gather = None
         t_loop_gather = None
         if (rank==0):
             t_init_gather = np.empty([size])
-            t_model_gather = np.empty([size])
+            #t_model_gather = np.empty([size])
             t_inf_gather = np.empty([size,numts,3])
             t_loop_gather = np.empty([size])
         comm.Gather(np.array(t_init),t_init_gather,root=0)
-        comm.Gather(np.array(t_model),t_model_gather,root=0)
+        #comm.Gather(np.array(t_model),t_model_gather,root=0)
         comm.Gather(t_inf,t_inf_gather,root=0)
         comm.Gather(np.array(t_loop),t_loop_gather,root=0)
         if (rank==0):
             for ir in range(size):
                 logger_init.info('%.8e',t_init_gather[ir])
-                logger_model.info('%.8e',t_model_gather[ir])
+                #logger_model.info('%.8e',t_model_gather[ir])
                 logger_loop.info('%.8e',t_loop_gather[ir])
                 for its in range(numts):
                     logger_inf.info('%.8e %.8e %.8e',t_inf_gather[ir,its,0],

@@ -2,6 +2,10 @@
 database:
     # colocated, clustered
     launch: "colocated"
+    port: 6780
+    # Polaris: lo, hsn0
+    # Cannot use lo for clustered
+    network_interface: "lo"
 
 # Run config
 run_args:
@@ -17,30 +21,29 @@ run_args:
     simprocs: 8
     # any number up to limits of CPU
     simprocs_pn: 8
+    # any number
+    mlprocs: 8
+    # any number up to limits of CPU/GPU
+    mlprocs_pn: 4
     # any number up to limits of CPU
     dbprocs_pn: 4
-    # Training only: cuda, cpu
-    device: "cuda"
-    # Polaris: none, core, list
-    cpu_bind: "none"
-    # Polaris: lo, hsn0
-    # Cannot use lo for clustered
-    network_interface: "lo"
+    # Polaris: none, core, list, numa
+    sim_cpu_bind: "none"
+    # Polaris: none, core, list, numa
+    ml_cpu_bind: "none"
 
 # Experiment config
 experiment:
-    port: 6780
     name: "inference-example"
     # pbs, cobalt
     launcher: "pbs"
-    executable: "./src/inference.py"
 
 # Model Inference config
 model:
     path: "./model_jit.pt"
     backend: "TORCH"
     # cpu, gpu
-    device: "cpu"
+    device: "gpu"
     # 0 - simprocs for clustered
     # 0 - simprocs_pn for colocated
     batch: 0
@@ -48,6 +51,18 @@ model:
     # 1 if device=cpu
     devices_per_node: 1
 
+# Simulation config
+sim:
+    executable: "./src/inference.py"
+    # Device for simulation: cuda, cpu
+    device: "cpu"
+
+# Distributed training config
+train:
+    executable: ""
+    # Device for simulation: cuda, cpu
+    device: ""
+
 # Logging config
-# no, fom, verbose. Set to fom for optimization
-logging: "no" 
+# no, fom, verbose, verbose-perf. Set to fom for optimization
+logging: "verbose-perf" 
