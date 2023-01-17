@@ -109,7 +109,7 @@ def main():
     pred_key = 'p.'+str(rank)
 
     # Open file to write predictions
-    if (args.logging!='verbose-perf' or args.logging!='fom'):
+    if (args.logging!='verbose-perf' and args.logging!='fom'):
         if (rank%args.ppn==0):
             fname = f'./predictions_node{rank//args.ppn+1}.dat'
             fid = open(fname, 'w')
@@ -144,7 +144,7 @@ def main():
         t_inf[its,2] = toc_r - tic_r
         
         # Print info to stdout
-        if (args.logging!='verbose-perf' or args.logging!='fom'):
+        if (args.logging!='verbose-perf' and args.logging!='fom'):
             comm.Barrier()
             if (rank==0):
                 print(f'Performed inference on all ranks for step {its+1}')
@@ -155,7 +155,7 @@ def main():
             logger_inf.info('%.8e %.8e %.8e',toc_s-tic_s,toc_i-tic_i,toc_r-tic_r)
 
         # Write predictions to file
-        if (args.logging!='fom' or args.logging!='verbose-perf'):
+        if (args.logging!='fom' and args.logging!='verbose-perf'):
             if (rank%args.ppn==0):
                 truth = inputs**2 + 3*inputs + 1
                 for i in range(nSamples):
