@@ -67,7 +67,6 @@ def convert_pt2onnx(nSamples, model_name, model_check=False):
     model.eval()
 
     # Export the model to ONNX
-    inf_batch = nSamples
     dummy_input = torch.randn(nSamples, nInputs, dtype=torch.float32)
     input_names = ['input']
     output_names = ['output']
@@ -89,15 +88,16 @@ def main():
     size = comm.Get_size()
     rank = comm.Get_rank()
     name = MPI.Get_processor_name()
-    #print(f'Rank {rank}/{size} says hello from node {name}') 
-    #comm.Barrier()
-    #sys.stdout.flush()
+    print(f'Rank {rank}/{size} says hello from node {name}') 
+    comm.Barrier()
+    sys.stdout.flush()
 
     # Parse arguments
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--model_device',default='cpu',help='Device to run model on')
     parser.add_argument('--sim_device',default='cpu',help='Device to run "simulation" on')
-    parser.add_argument('--ppn',default=2,type=int,help='Number of processes per node')
+    parser.add_argument('--ppn',default=1,type=int,help='Number of processes per node')
+    parser.add_argument('--nSamples',default=8,type=int,help='Number of samples used for inference on each rank')
     parser.add_argument('--logging',default='no',help='Level of performance logging')
     args = parser.parse_args()
 
@@ -122,8 +122,9 @@ def main():
 
     # Initialize ONNX inference session
     model_name = 'model'
-    nSamples = 2
-    convert_pt2onnx(nSamples, model_name)
+    if (rank==0):
+        convert_pt2onnx(args.nSamples, model_name)
+    comm.Barrier()
     ort_session, t_init = init_onnx_session(args, f'{model_name}.onnx', logger_init)
     comm.Barrier()
     if (rank==0):
@@ -156,13 +157,13 @@ def main():
     tic_l = perf_counter()
     for its in range(numts):
         # Generate the input data for the polynomial y=f(x)=x**2 + 3*x + 1
-        inputs = np.float32(np.random.uniform(low=xmin, high=xmax, size=(nSamples,1)))
+        inputs = np.float32(np.random.uniform(low=xmin, high=xmax, size=(args.nSamples,1)))
         if (args.sim_device=='cuda'):
             # Setup
             if (its==0):
                 ort_in_value = ort.OrtValue.ortvalue_from_numpy(inputs, device_type=args.sim_device, 
                                                        device_id=local_rank)
-                ort_out_value = ort.OrtValue.ortvalue_from_shape_and_type([nSamples,1], np.float32,
+                ort_out_value = ort.OrtValue.ortvalue_from_shape_and_type([args.nSamples,1], np.float32,
                                                        device_type=args.sim_device, device_id=local_rank)
                 io_bind = ort_session.io_binding()
                 io_bind.bind_input(name='input', device_type=ort_in_value.device_name(), device_id=local_rank, 
@@ -180,6 +181,8 @@ def main():
             predictions = ort_session.run([], {'input':inputs})[0]
             toc_i = perf_counter()
         elif (args.sim_device=='cpu' and args.model_device=='cuda'):
+            # This implementation places all inference requests from all CPU ranks on
+            # a single GPU. Risk of running out of memory as increase number of ranks.
             if (its==0):
                 io_bind = ort_session.io_binding()
             tic_i = perf_counter()
@@ -211,7 +214,7 @@ def main():
         if (args.logging!='fom' and args.logging!='verbose-perf'):
             if (rank%args.ppn==0):
                 truth = inputs**2 + 3*inputs + 1
-                for i in range(nSamples):
+                for i in range(args.nSamples):
                     fid.write(f'{inputs[i,0]:.6e} {predictions[i,0]:.6e} {truth[i,0]:.6e}\n')
     
     toc_l = perf_counter()
