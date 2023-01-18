@@ -187,7 +187,7 @@ def trainNN(features, target, args, comm, rank, size):
                                 [nTrain, nVal], generator=randGen)
 
     # Data parallel loader
-    torch.set_num_threads(size)
+    torch.set_num_threads(1)
     train_sampler = torch.utils.data.distributed.DistributedSampler(
                            trainDataset, num_replicas=size, rank=rank)
     train_dataloader = DataLoader(trainDataset, batch_size=args.batch,
