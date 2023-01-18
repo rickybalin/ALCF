@@ -75,6 +75,15 @@ def main():
         print('All SmartRedis clients initialized')
         sys.stdout.flush()
 
+    # Check model has been uploaded
+    while True:
+        if (client.model_exists('model')):
+            break
+    comm.Barrier()
+    if (rank==0):
+        print('Model found in database')
+        sys.stdout.flush()
+
     # Load model onto Orchestrator
     # (Already loaded in driver but keeping this here for now)
     #tic = 0.; toc = 0.
@@ -198,9 +207,10 @@ def main():
                 for its in range(numts):
                     logger_inf.info('%.8e %.8e %.8e',t_inf_gather[ir,its,0],
                                      t_inf_gather[ir,its,1],t_inf_gather[ir,its,2])
-    
-    if (rank%args.ppn==0):
-        fid.close()
+   
+    if (args.logging!='verbose-perf' and args.logging!='fom'): 
+        if (rank%args.ppn==0):
+            fid.close()
 
     # Exit
     if (rank==0):

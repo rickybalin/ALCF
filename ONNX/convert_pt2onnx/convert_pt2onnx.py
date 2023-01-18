@@ -50,6 +50,7 @@ def main():
     nOutputs = 1
     nNeurons = 200
     nLayers = 25
+    # By default model is in dtype=float32
     model = NeuralNetwork(inputDim=nInputs, outputDim=nOutputs,
                           numNeurons=nNeurons, numLayers=nLayers)
     model.apply(weights_init_uniform_rule)
@@ -62,7 +63,7 @@ def main():
 
     # Provide input and output names
     inf_batch = 512*100
-    dummy_input = torch.randn(inf_batch,nInputs, device=device)
+    dummy_input = torch.randn(inf_batch,nInputs, device=device, dtype=torch.float32)
     print(f'Torch inputs on device: {dummy_input.device}')
     input_names = ['input']
     output_names = ['output']
@@ -70,7 +71,7 @@ def main():
     # Perform inference with torch model on device
     predictions_torch = model(dummy_input)
     print(f'Torch predictions on device: {predictions_torch.device}\n')
-    #sleep(5)
+    sleep(5)
 
     # Export the model to ONNX
     torch.onnx.export(model, dummy_input, 'model.onnx', verbose=False,
@@ -85,7 +86,8 @@ def main():
     #ort_device = ort.get_device()
     ort_providers = ['CPUExecutionProvider'] # always include CPU execution provider
     if str(device)=='cuda':
-        ort_providers = ort_providers + ['CUDAExecutionProvider']
+        # NB: ORDER MATTERS!!! CUDA before CPU EP if want CUDA to be dafault for Method 1 below
+        ort_providers = ['CUDAExecutionProvider'] + ort_providers
     options = ort.SessionOptions()
     ort_session = ort.InferenceSession('model.onnx', sess_options=options,
                                        providers=ort_providers)
@@ -109,9 +111,11 @@ def main():
     ort_predictions_value = ort_predictions[0]
     np.testing.assert_allclose(to_numpy(predictions_torch), ort_predictions_value, rtol=1e-03, atol=1e-05)
     print('Exported model has been tested on CPU with ONNXRuntime, predictions validated to set tolerance \n')
-    #sleep(5)
+    sleep(5)
 
     # Perform inference with ONNX model on GPU
+    # Based on examples at https://onnxruntime.ai/docs/api/python/api_summary.html#data-on-device
+    loop_its = 1000
     if str(device)=='cuda':
         # Method 1: Offload input data from CPU to GPU, output data is on CPU
         print('ONNX runtime inference on GPU')
@@ -122,6 +126,8 @@ def main():
         io_bind.bind_output(ort_output_name)
         # ORT will copy data over to device if 'input' is consumed by nodes with device
         ort_session.run_with_iobinding(io_bind)
+        for i in range(loop_its):
+            ort_session.run_with_iobinding(io_bind)
         ort_predictions_gpu_value = io_bind.copy_outputs_to_cpu()[0]
         np.testing.assert_allclose(to_numpy(predictions_torch), ort_predictions_gpu_value, 
                                    rtol=1e-03, atol=1e-05)
@@ -139,7 +145,8 @@ def main():
                                 element_type=np.float32, shape=ort_x_value.shape(), 
                                 buffer_ptr=ort_x_value.data_ptr())
         io_bind_2.bind_output(ort_output_name)
-        ort_session.run_with_iobinding(io_bind_2)
+        for i in range(loop_its):
+            ort_session.run_with_iobinding(io_bind_2)
         ort_predictions_gpu_value_2 = io_bind_2.copy_outputs_to_cpu()[0]
         np.testing.assert_allclose(to_numpy(predictions_torch), ort_predictions_gpu_value_2, 
                                    rtol=1e-03, atol=1e-05)
@@ -150,9 +157,25 @@ def main():
         # Method 3: Input data is on GPU, output data is on GPU
         print('ONNX runtime inference on GPU')
         print('Method 3: Input data is on GPU, output data is on GPU')
-        # example 3 from https://onnxruntime.ai/docs/api/python/api_summary.html#data-on-device
-        #print('Exported model has been tested on GPU with ONNXRuntime, ',
-        #     'predictions validated to set tolerance \n')
+        ort_x_value = ort.OrtValue.ortvalue_from_numpy(to_numpy(dummy_input), device_type=str(device), 
+                                                       device_id=0)
+        ort_y_value = ort.OrtValue.ortvalue_from_shape_and_type([inf_batch,nInputs], np.float32,
+                                                       device_type=str(device), device_id=0)
+        io_bind_3 = ort_session.io_binding()
+        io_bind_3.bind_input(name=ort_input_name, device_type=ort_x_value.device_name(), device_id=0, 
+                                element_type=np.float32, shape=ort_x_value.shape(), 
+                                buffer_ptr=ort_x_value.data_ptr())
+        io_bind_3.bind_output(name='output', device_type=ort_y_value.device_name(), device_id=0, 
+                                element_type=np.float32, shape=ort_y_value.shape(), 
+                                buffer_ptr=ort_y_value.data_ptr())
+        for i in range(loop_its):
+            ort_session.run_with_iobinding(io_bind_3)
+        ort_predictions_gpu_value_3 = io_bind_3.copy_outputs_to_cpu()[0]
+        np.testing.assert_allclose(to_numpy(predictions_torch), ort_predictions_gpu_value_3, 
+                                   rtol=1e-03, atol=1e-05)
+        print('Exported model has been tested on GPU with ONNXRuntime, ',
+              'predictions validated to set tolerance \n')
+        sleep(5)                                       
         
 
 

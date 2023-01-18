@@ -6,7 +6,7 @@ database:
 # Run config
 run_args:
     # any value
-    nodes: 2
+    nodes: 1
     # any value for clustered, 1 for colocated
     db_nNodes: 1
     # any value for clustered, 1 for colocated
@@ -14,11 +14,11 @@ run_args:
     # machine specific, 32 for Polaris 48 for ThetaGPU
     cores_pn: 32
     # any number
-    simprocs: 16
+    simprocs: 8
     # any number up to limits of CPU/GPU
     simprocs_pn: 8
     # any number
-    mlprocs: 8
+    mlprocs: 4
     # any number up to limits of CPU/GPU
     mlprocs_pn: 4
     # any number up to limits of CPU
