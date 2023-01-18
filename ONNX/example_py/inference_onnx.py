@@ -152,7 +152,7 @@ def main():
             fid = open(fname, 'w')
 
     # Emulate integration of PDEs with a do loop
-    numts = 10
+    numts = 40
     t_inf = np.empty([numts,])
     tic_l = perf_counter()
     for its in range(numts):
@@ -250,8 +250,9 @@ def main():
                 for its in range(numts):
                     logger_inf.info('%.8e',t_inf_gather[ir,its])
     
-    if (rank%args.ppn==0):
-        fid.close()
+    if (args.logging!='fom' and args.logging!='verbose-perf'):
+        if (rank%args.ppn==0):
+            fid.close()
 
     # Exit
     if (rank==0):
