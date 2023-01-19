@@ -45,6 +45,7 @@ def main():
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--dbnodes',default=1,type=int,help='Number of database nodes')
     parser.add_argument('--device',default='cpu',help='Device to run on')
+    parser.add_argument('--precision',default='fp32',help='Precision used for inference')
     parser.add_argument('--ppn',default=2,type=int,help='Number of processes per node')
     parser.add_argument('--logging',default='no',help='Level of performance logging')
     args = parser.parse_args()
@@ -129,10 +130,11 @@ def main():
     tic_l = perf_counter()
     for its in range(numts):
         # Generate the input data for the polynomial y=f(x)=x**2 + 3*x + 1
-        if (args.device=='cpu'):
-            inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
-        elif (args.device=='cuda'):
-            inputs_gpu = cp.random.uniform(low=xmin, high=xmax, size=(nSamples,1), dtype=np.double)
+        inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
+        if (args.precision=='fp32'):
+            inputs = np.float32(inputs)
+        if (args.device=='cuda'):
+            inputs_gpu = cp.asarray(inputs)
 
         # Perform inferece
         tic_s = perf_counter()
