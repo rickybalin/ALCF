@@ -2,6 +2,7 @@ import sys
 import argparse
 from time import sleep, perf_counter
 import numpy as np
+import cupy as cp
 import logging
 from smartredis import Client
 
@@ -44,6 +45,7 @@ def main():
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--dbnodes',default=1,type=int,help='Number of database nodes')
     parser.add_argument('--device',default='cpu',help='Device to run on')
+    parser.add_argument('--precision',default='fp32',help='Precision used for inference')
     parser.add_argument('--ppn',default=2,type=int,help='Number of processes per node')
     parser.add_argument('--logging',default='no',help='Level of performance logging')
     args = parser.parse_args()
@@ -72,6 +74,15 @@ def main():
     comm.Barrier()
     if (rank==0):
         print('All SmartRedis clients initialized')
+        sys.stdout.flush()
+
+    # Check model has been uploaded
+    while True:
+        if (client.model_exists('model')):
+            break
+    comm.Barrier()
+    if (rank==0):
+        print('Model found in database')
         sys.stdout.flush()
 
     # Load model onto Orchestrator
@@ -108,7 +119,7 @@ def main():
     pred_key = 'p.'+str(rank)
 
     # Open file to write predictions
-    if (args.logging!='verbose-perf' or args.logging!='fom'):
+    if (args.logging!='verbose-perf' and args.logging!='fom'):
         if (rank%args.ppn==0):
             fname = f'./predictions_node{rank//args.ppn+1}.dat'
             fid = open(fname, 'w')
@@ -120,9 +131,15 @@ def main():
     for its in range(numts):
         # Generate the input data for the polynomial y=f(x)=x**2 + 3*x + 1
         inputs = np.random.uniform(low=xmin, high=xmax, size=(nSamples,1))
+        if (args.precision=='fp32'):
+            inputs = np.float32(inputs)
+        if (args.device=='cuda'):
+            inputs_gpu = cp.asarray(inputs)
 
         # Perform inferece
         tic_s = perf_counter()
+        if (args.device=='cuda'):
+            inputs = cp.asnumpy(inputs_gpu)
         client.put_tensor(inf_key, inputs)
         toc_s = perf_counter()
         tic_i = perf_counter()
@@ -130,13 +147,15 @@ def main():
         toc_i = perf_counter()
         tic_r = perf_counter()
         predictions = client.get_tensor(pred_key)
+        if (args.device=='cuda'):
+            predictions_gpu = cp.asarray(predictions)
         toc_r = perf_counter()
         t_inf[its,0] = toc_s - tic_s
         t_inf[its,1] = toc_i - tic_i
         t_inf[its,2] = toc_r - tic_r
         
         # Print info to stdout
-        if (args.logging!='verbose-perf' or args.logging!='fom'):
+        if (args.logging!='verbose-perf' and args.logging!='fom'):
             comm.Barrier()
             if (rank==0):
                 print(f'Performed inference on all ranks for step {its+1}')
@@ -147,7 +166,7 @@ def main():
             logger_inf.info('%.8e %.8e %.8e',toc_s-tic_s,toc_i-tic_i,toc_r-tic_r)
 
         # Write predictions to file
-        if (args.logging!='fom' or args.logging!='verbose-perf'):
+        if (args.logging!='fom' and args.logging!='verbose-perf'):
             if (rank%args.ppn==0):
                 truth = inputs**2 + 3*inputs + 1
                 for i in range(nSamples):
@@ -170,29 +189,30 @@ def main():
             print('Collecting performance stats ... ')
             sys.stdout.flush()
         t_init_gather = None
-        t_model_gather = None
+        #t_model_gather = None
         t_inf_gather = None
         t_loop_gather = None
         if (rank==0):
             t_init_gather = np.empty([size])
-            t_model_gather = np.empty([size])
+            #t_model_gather = np.empty([size])
             t_inf_gather = np.empty([size,numts,3])
             t_loop_gather = np.empty([size])
         comm.Gather(np.array(t_init),t_init_gather,root=0)
-        comm.Gather(np.array(t_model),t_model_gather,root=0)
+        #comm.Gather(np.array(t_model),t_model_gather,root=0)
         comm.Gather(t_inf,t_inf_gather,root=0)
         comm.Gather(np.array(t_loop),t_loop_gather,root=0)
         if (rank==0):
             for ir in range(size):
                 logger_init.info('%.8e',t_init_gather[ir])
-                logger_model.info('%.8e',t_model_gather[ir])
+                #logger_model.info('%.8e',t_model_gather[ir])
                 logger_loop.info('%.8e',t_loop_gather[ir])
                 for its in range(numts):
                     logger_inf.info('%.8e %.8e %.8e',t_inf_gather[ir,its,0],
                                      t_inf_gather[ir,its,1],t_inf_gather[ir,its,2])
-    
-    if (rank%args.ppn==0):
-        fid.close()
+   
+    if (args.logging!='verbose-perf' and args.logging!='fom'): 
+        if (rank%args.ppn==0):
+            fid.close()
 
     # Exit
     if (rank==0):
