@@ -18,7 +18,7 @@ export CC=cc
 export CXX=CC
 
 ## Clone and install SmartSim
-git clone https://github.com/rickybalin/SmartSim.git
+git clone https://github.com/CrayLabs/SmartSim.git
 cd SmartSim
 pip install -e .[ml] # The [ml] extension installs TensorFlow 2.8
 cd ..
@@ -96,6 +96,8 @@ cd ..
 MPICC="cc -shared" pip install --force-reinstall --no-cache-dir --no-binary=mpi4py mpi4py
 
 ## Install any other packages
-
-
+pip install hydra-core --upgrade
+pip install cupy-cuda${CUDA_VERSION_MAJOR}${CUDA_VERSION_MINOR}
+pip install onnx
+pip install onnxruntime-gpu # onnxruntime is CPU-only. onnxruntime-gpu includes most CPU abilities
 
