@@ -1,0 +1,101 @@
+# Database config
+database:
+    launch: False
+    # redis, keydb
+    backend: ""
+    # colocated, clustered
+    deployment: ""
+    port: 6780
+    # Polaris: lo, hsn0, uds
+    # Cannot use lo for clustered
+    network_interface: ""
+
+# Run config
+run_args:
+    # any value
+    nodes: 1
+    # any value for clustered, 1 for colocated
+    db_nodes: 1
+    # any value for clustered, 1 for colocated
+    sim_nodes: 1
+    # any value for clustered, 1 for colocated
+    ml_nodes: 1
+    # machine specific, 32 for Polaris 48 for ThetaGPU
+    cores_pn: 1
+    # any number
+    simprocs: 1
+    # any number up to limits of CPU
+    simprocs_pn: 1
+    # any number
+    mlprocs: 1
+    # any number up to limits of CPU/GPU
+    mlprocs_pn: 4
+    # any number up to limits of CPU
+    dbprocs_pn: 4
+    # Polaris: none, core, list, numa
+    sim_cpu_bind: ""
+    # Polaris: none, core, list, numa
+    ml_cpu_bind: "none"
+
+# Experiment config
+experiment:
+    name: ""
+    # pbs, cobalt
+    launcher: ""
+
+# Model Inference config
+model:
+    path: ""
+    backend: ""
+    # cpu, gpu
+    device: ""
+    # 0 - simprocs for clustered
+    # 0 - simprocs_pn for colocated
+    batch: 0
+    # 1 - number of GPUs available for inference
+    # 1 if device=cpu
+    devices_per_node: 1
+    # fp32, fp64
+    precision: ""
+    # data size
+    size: [1, 1, 1]
+
+# Simulation config
+sim:
+    executable: ""
+    # Device for simulation: cuda, cpu
+    device: ""
+    arguments: ""
+
+# Distributed training config
+train:
+    executable: "trainDriver.py"
+    data_path: "synthetic"
+    # sgs,qcnn-2d,qcnn-3d
+    model: "sgs"
+    # channels for qcnn model
+    channels: 1
+    # path to qcnn model config file
+    #qcnn_config: "96-procs_case/onlineTrain/qcnn_flat_plate_large.yaml"
+    #qcnn_config: "96-procs_case/onlineTrain/qcnn_flat_plate_1layer_fs.yaml"
+    qcnn_config: ""
+    # horovod, ddp
+    distributed: "ddp"
+    # Device for training: cuda, cpu
+    device: "cpu"
+    epochs: 2
+    # how many tensors to grab from database, 0: grab all tensors at once
+    batch: 0
+    mini_batch: 64
+    learning_rate: 0.0001
+    tolerance: 1.0e-8
+    validation_split: 0.25
+    optimizer: "Adam"
+    precision: "fp32"
+    name: "NNmodel"
+    save_db: False
+    repeatability: False
+
+# Logging config
+# no, fom, verbose, verbose-perf. Set to fom for optimization
+logging: "verbose-perf" 
