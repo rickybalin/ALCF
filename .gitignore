@@ -1,4 +1,7 @@
 # Training data
 *.npy
 
+# OnlineML related files
+./ML/onlineML/outputs
+./ML/onlineML/*.pt
 

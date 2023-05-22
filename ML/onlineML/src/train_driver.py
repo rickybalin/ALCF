@@ -81,7 +81,6 @@ def main(cfg: DictConfig):
             torch.backends.cudnn.benchmark = False # do not select fastest algorithms
     else:
         rng = np.random.default_rng()
-    #randGen = torch.Generator().manual_seed(random_seed)
 
     # Instantiate performance data class
     t_data = timeStats()

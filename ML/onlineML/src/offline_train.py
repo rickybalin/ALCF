@@ -4,8 +4,7 @@
 ##### training driver to assist in learning and evaluation model performance.
 #####
 import sys
-from datetime import datetime
-from time import sleep,perf_counter
+from time import perf_counter
 import numpy as np
 import math as m
 
@@ -19,7 +18,7 @@ try:
 except:
     pass
 
-from utils import metric_average, comp_corrCoeff
+from utils import metric_average
 from datasets import OfflineDataset
 
 ### Train the model
@@ -54,7 +53,7 @@ def offline_train(comm, model, train_loader, optimizer, epoch, t_data, cfg):
 
             # Print data for some ranks only
             if (comm.rank%20==0 and (batch_idx)%50==0):
-                print(f'{comm.rank}: Train Epoch: {epoch} | ' + \
+                print(f'{comm.rank}: Train Epoch: {epoch+1} | ' + \
                       f'[{batch_idx+1}/{num_batches}] | ' + \
                       f'Loss: {loss.item():>8e}')
                 sys.stdout.flush()
@@ -63,7 +62,7 @@ def offline_train(comm, model, train_loader, optimizer, epoch, t_data, cfg):
     running_loss = running_loss / num_batches
     loss_avg = metric_average(comm, running_loss)
     if comm.rank == 0: 
-        print(f"Training set: | Epoch: {epoch} | Average loss: {loss_avg:>8e} \n")
+        print(f"Training set: | Epoch: {epoch+1} | Average loss: {loss_avg:>8e} \n")
         sys.stdout.flush()
 
     return loss_avg, t_data
@@ -98,7 +97,7 @@ def offline_validate(comm, model, val_loader, epoch, cfg):
                 
             # Print data for some ranks only
             if (comm.rank%20==0 and (batch_idx)%50==0):
-                print(f'{comm.rank}: Validation Epoch: {epoch} | ' + \
+                print(f'{comm.rank}: Validation Epoch: {epoch+1} | ' + \
                         f'[{batch_idx+1}/{num_batches}] | ' + \
                         f'Accuracy: {acc.item():>8e} | Loss {loss.item():>8e}')
                 sys.stdout.flush()
@@ -109,7 +108,7 @@ def offline_validate(comm, model, val_loader, epoch, cfg):
     running_loss = running_loss / num_batches
     loss_avg = metric_average(comm, running_loss)
     if comm.rank == 0:
-        print(f"Validation set: | Epoch: {epoch} | Average accuracy: {acc_avg:>8e} | Average Loss: {loss_avg:>8e}")
+        print(f"Validation set: | Epoch: {epoch+1} | Average accuracy: {acc_avg:>8e} | Average Loss: {loss_avg:>8e}")
         sys.stdout.flush()
 
     if (cfg.train.model=='sgs'):
@@ -143,19 +142,31 @@ def offlineTrainLoop(cfg, comm, hvd_comm, t_data, model, data):
     samples = data.shape[0]
     nVal = m.floor(samples*cfg.train.validation_split)
     nTrain = samples-nVal
-    randGen = torch.Generator().manual_seed(12345)
     dataset = OfflineDataset(data)
-    trainDataset, valDataset = random_split(dataset, [nTrain, nVal], generator=randGen)
+    trainDataset, valDataset = random_split(dataset, [nTrain, nVal])
 
     # Data parallel loader
+    # Try:
+    # - pin_memory=True - should be faster for GPU training
+    # - num_workers > 1 - enables multi-process data loading 
+    # - prefetch_factor >1 - enables pre-fetching of data
     if (cfg.train.data_path == "synthetic"):
         train_sampler = None
         val_sampler = None
+        train_dataloader = DataLoader(trainDataset, batch_size=cfg.train.mini_batch, 
+                                      shuffle=True, drop_last=True)
+        val_dataloader = DataLoader(valDataset, batch_size=cfg.train.mini_batch, 
+                                    drop_last=True)
     else:
-        train_sampler = DistributedSampler(trainDataset, num_replicas=comm.size, rank=comm.rank)
-        val_sampler = DistributedSampler(valDataset, num_replicas=comm.size, rank=comm.rank)
-    train_dataloader = DataLoader(trainDataset, batch_size=cfg.train.mini_batch, sampler=train_sampler)
-    val_dataloader = DataLoader(valDataset, batch_size=cfg.train.mini_batch, sampler=val_sampler)
+        # Each rank has loaded all the training data, so restrict data loader to a subset of dataset
+        train_sampler = DistributedSampler(trainDataset, num_replicas=comm.size, rank=comm.rank,
+                                           shuffle=True, drop_last=True)
+        val_sampler = DistributedSampler(valDataset, num_replicas=comm.size, rank=comm.rank,
+                                         drop_last=True)  
+        train_dataloader = DataLoader(trainDataset, batch_size=cfg.train.mini_batch, 
+                                  sampler=train_sampler)
+        val_dataloader = DataLoader(valDataset, batch_size=cfg.train.mini_batch, 
+                                sampler=val_sampler)
 
     # Initialize optimizer
     if (cfg.train.optimizer == "Adam"):
@@ -173,14 +184,14 @@ def offlineTrainLoop(cfg, comm, hvd_comm, t_data, model, data):
         if (comm.rank == 0):
             print(f"\n Epoch {ep+1} of {cfg.train.epochs}")
             print("-------------------------------")
-            if (cfg.logging=='debug'):
-                print(datetime.now())
             sys.stdout.flush()
 
         # Train
+        if train_sampler:
+            train_sampler.set_epoch(ep)
         rtime = perf_counter()
-        global_loss, t_data = offline_train(comm, model, train_dataloader, optimizer, 
-                                            ep, t_data, cfg)
+        global_loss, t_data = offline_train(comm, model, train_dataloader, 
+                                            optimizer, ep, t_data, cfg)
         rtime = perf_counter() - rtime
         if (ep>0):
             t_data.t_train = t_data.t_train + rtime

@@ -1,101 +1,66 @@
 # Database config
 database:
-    launch: False
-    # redis, keydb
-    backend: ""
-    # colocated, clustered
-    deployment: ""
+    launch: False # True,False - determine whether to launch SmartSim database
+    backend: "" # redis,keydb - launch Redis of KeyDB database
+    deployment: "" # colocated,clustered - deployment of database
     port: 6780
-    # Polaris: lo, hsn0, uds
-    # Cannot use lo for clustered
-    network_interface: ""
+    network_interface: "" # lo,hsn0,uds - network used for data transfer
+    # On Polaris: lo hsn0 for clustered, lo and uds for co-located
+    exp_name: "" # string
+    launcher: "" # pbs, cobalt - job scheduler
 
 # Run config
 run_args:
-    # any value
-    nodes: 1
-    # any value for clustered, 1 for colocated
-    db_nodes: 1
-    # any value for clustered, 1 for colocated
-    sim_nodes: 1
-    # any value for clustered, 1 for colocated
-    ml_nodes: 1
-    # machine specific, 32 for Polaris 48 for ThetaGPU
-    cores_pn: 1
-    # any number
-    simprocs: 1
-    # any number up to limits of CPU
-    simprocs_pn: 1
-    # any number
-    mlprocs: 1
-    # any number up to limits of CPU/GPU
-    mlprocs_pn: 4
-    # any number up to limits of CPU
-    dbprocs_pn: 4
-    # Polaris: none, core, list, numa
-    sim_cpu_bind: ""
-    # Polaris: none, core, list, numa
-    ml_cpu_bind: "none"
-
-# Experiment config
-experiment:
-    name: ""
-    # pbs, cobalt
-    launcher: ""
+    nodes: 1 # integer - total number of nodes for job
+    db_nodes: 1 # integer - number of nodes for database
+    sim_nodes: 1 # integer - number of nodes for simulation
+    ml_nodes: 1 # integer - number of nodes for ML training
+    cores_pn: 1 # integer - number of CPU cores per node.
+    simprocs: 1 # integer - number of MPI processes for simulation
+    simprocs_pn: 1 # integer - number of MPI processes per node for simulation
+    mlprocs: 1 # integer - number of MPI processes for ML training
+    mlprocs_pn: 4 # integer - number of MPI processes per node for ML training
+    dbprocs_pn: 4 # integer - number of threads for database
+    sim_cpu_bind: "" # none, core, list, numa - CPU binding for simulation
+    ml_cpu_bind: "none" # none, core, list, numa - CPU binding for ML training
 
 # Model Inference config
 model:
-    path: ""
-    backend: ""
-    # cpu, gpu
-    device: ""
-    # 0 - simprocs for clustered
-    # 0 - simprocs_pn for colocated
-    batch: 0
-    # 1 - number of GPUs available for inference
-    # 1 if device=cpu
-    devices_per_node: 1
-    # fp32, fp64
-    precision: ""
-    # data size
-    size: [1, 1, 1]
+    path: "" # string - path to model to load for inference
+    backend: "" # TORCH - ML backend to use for inference
+    device: "" # cpu,gpu - device on which to run inference
+    batch: 0 # integer - how many inference requests to batch before running model
+    devices_per_node: 1 # integer - number of GPU available for inference
+    precision: "" # fp32, fp64 - precision of model and of data
+    size: [1, 1, 1] # data size
 
 # Simulation config
 sim:
-    executable: ""
-    # Device for simulation: cuda, cpu
-    device: ""
-    arguments: ""
+    executable: "" # string - path to simulation executable
+    device: "" # cpu, cuda - device for simulation
+    arguments: "" # string - command line arguments to simulation
+    affinity: "" # string - GPU affinity script for simulation
 
 # Distributed training config
 train:
-    executable: "trainDriver.py"
-    data_path: "synthetic"
-    # sgs,qcnn-2d,qcnn-3d
-    model: "sgs"
-    # channels for qcnn model
-    channels: 1
-    # path to qcnn model config file
-    #qcnn_config: "96-procs_case/onlineTrain/qcnn_flat_plate_large.yaml"
-    #qcnn_config: "96-procs_case/onlineTrain/qcnn_flat_plate_1layer_fs.yaml"
-    qcnn_config: ""
-    # horovod, ddp
-    distributed: "horovod"
-    # Device for training: cuda, cpu
-    device: "cpu"
-    epochs: 2
-    # how many tensors to grab from database, 0: grab all tensors at once
-    batch: 0
-    mini_batch: 64
-    learning_rate: 0.0001
-    tolerance: 1.0e-8
-    validation_split: 0.25
-    optimizer: "Adam"
-    precision: "fp32"
-    name: "NNmodel"
-    save_db: False
-    repeatability: False
+    executable: "" # string - path to ML training executable
+    data_path: "./train_data/SGS/flatPlateBL_Ret1000_flatTop_12-30_3x.npy" # string, synthetic - path to training data to load
+    model: "sgs" # sgs, qcnn-3d - model ID
+    channels: 1 # integer - channels for QCNN model
+    qcnn_config: "" # string - path to config file for QCNN model
+    distributed: "ddp" # horovod, ddp - distributed training library
+    device: "cpu" # cpu, cuda, xpu - device to train on
+    epochs: 10 # integer - max number of epochs for training
+    batch: 0 # integer - number of tensors to grab from database at once, 0: grab all tensors at once
+    mini_batch: 64 # integer - mini batch size for SGD update
+    learning_rate: 0.0001 # float - serial leranring rate
+    tolerance: 1.0e-8 # float - convergence tolerance of validation loss
+    validation_split: 0.25 # float - percentage of data kept for validation
+    optimizer: "Adam" # Adam - optimizer used for training
+    precision: "fp32" # fp32, fp64, bf64 - precision for training
+    name: "./models/SGS/flatPlateBL_Ret1000_flatTop_12-30/NNmodel_3x" # string - name used to save ML model
+    save_db: False # True, False - save database contents at the end of trainint to .rdb file
+    repeatability: False # True, False - make training deterministic
 
 # Logging config
-# no, debug, verbose-perf. Set to fom for optimization
-logging: "debug" 
+logging: "debug" # no, debug, verbose-perf - type of logging desired

@@ -73,7 +73,7 @@ def weights_init_uniform(m):
     classname = m.__class__.__name__
     # for every Linear layer in a model..
     if classname.find('Linear') != -1: 
-        # apply a uniform distribution to the weights and a bias=0
+        # apply a fixed value to the weights and a set bias=0
         m.weight.data.fill_(0.5)
         m.bias.data.fill_(0)
 

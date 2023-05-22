@@ -23,7 +23,7 @@ def parseNodeList(fname):
 def launch_coDB(cfg):
     # Initialize the SmartSim Experiment
     PORT = cfg.database.port
-    exp = Experiment(cfg.experiment.name, launcher=cfg.experiment.launcher)
+    exp = Experiment(cfg.database.exp_name, launcher=cfg.database.launcher)
 
     # Set the run settings, including the client executable and how to run it
     client_exe = cfg.train.executable
@@ -86,7 +86,7 @@ def launch_clDB(cfg, nodelist, nNodes):
 
     # Set up database and start it
     PORT = cfg.database.port
-    exp = Experiment(cfg.experiment.name, launcher=cfg.experiment.launcher)
+    exp = Experiment(cfg.database.exp_name, launcher=cfg.database.launcher)
     runArgs = {"np": 1, "ppn": 1, "cpu-bind": "numa"}
     kwargs = {
         'maxclients': 100000,
