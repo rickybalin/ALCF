@@ -5,3 +5,6 @@
 ./ML/onlineML/outputs
 ./ML/onlineML/*.pt
 
+# Other
+*/__pycache__
+
