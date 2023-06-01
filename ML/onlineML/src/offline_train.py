@@ -43,10 +43,11 @@ def offline_train(comm, model, train_loader, optimizer, epoch, t_data, cfg):
             loss.backward()
             optimizer.step()
             rtime = perf_counter() - rtime
-            t_data.t_compMiniBatch = t_data.t_compMiniBatch + rtime
-            t_data.i_compMiniBatch = t_data.i_compMiniBatch + 1 
-            fact = float(1.0/t_data.i_compMiniBatch)
-            t_data.t_AveCompMiniBatch = fact*rtime + (1.0-fact)*t_data.t_AveCompMiniBatch            
+            if (epoch>1):
+                t_data.t_compMiniBatch = t_data.t_compMiniBatch + rtime
+                t_data.i_compMiniBatch = t_data.i_compMiniBatch + 1 
+                fact = float(1.0/t_data.i_compMiniBatch)
+                t_data.t_AveCompMiniBatch = fact*rtime + (1.0-fact)*t_data.t_AveCompMiniBatch            
 
             # Update running loss
             running_loss += loss.item()
@@ -180,6 +181,7 @@ def offlineTrainLoop(cfg, comm, hvd_comm, t_data, model, data):
                               named_parameters=model.named_parameters(),op=hvd.mpi_ops.Sum)
 
     # Loop over epochs
+    tic_l = perf_counter()
     for ep in range(cfg.train.epochs):
         if (comm.rank == 0):
             print(f"\n Epoch {ep+1} of {cfg.train.epochs}")
@@ -189,17 +191,24 @@ def offlineTrainLoop(cfg, comm, hvd_comm, t_data, model, data):
         # Train
         if train_sampler:
             train_sampler.set_epoch(ep)
-        rtime = perf_counter()
+        tic_t = perf_counter()
         global_loss, t_data = offline_train(comm, model, train_dataloader, 
                                             optimizer, ep, t_data, cfg)
-        rtime = perf_counter() - rtime
-        if (ep>0):
-            t_data.t_train = t_data.t_train + rtime
+        toc_t = perf_counter()
+        if (ep>1):
+            t_data.t_train = t_data.t_train + (toc_t - tic_t)
+            t_data.tp_train = t_data.tp_train + nTrain/(toc_t - tic_t)
             t_data.i_train = t_data.i_train + 1
 
         # Validate
+        tic_v = perf_counter()
         global_acc, global_val_loss, valData = offline_validate(comm, model, 
                                                                 val_dataloader, ep, cfg)
+        toc_v = perf_counter()
+        if (ep>1):
+            t_data.t_val = t_data.t_val + (toc_v - tic_v)
+            t_data.tp_val = t_data.tp_val + nVal/(toc_v - tic_v)
+            t_data.i_val = t_data.i_val + 1
 
         # Check if tolerance on loss is satisfied
         if (global_val_loss <= cfg.train.tolerance):
@@ -213,5 +222,7 @@ def offlineTrainLoop(cfg, comm, hvd_comm, t_data, model, data):
                 print("\nMax number of epochs reached. Stopping training loop. \n")
             break
 
+    toc_l = perf_counter()
+    t_data.t_tot = toc_l - tic_l
 
     return model, valData

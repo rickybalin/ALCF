@@ -129,11 +129,11 @@ def main(cfg: DictConfig):
     if (cfg.train.distributed=='ddp'):
         model = DDP(model)
 
+    # Train model
     if cfg.database.launch:
         model, testData = onlineTrainLoop(cfg, comm, hvd_comm, client, t_data, model)
     else:
         model, testData = offlineTrainLoop(cfg, comm, hvd_comm, t_data, model, data)
-
 
     # Save model to file before exiting
     if (cfg.train.distributed=='ddp'):
@@ -166,7 +166,7 @@ def main(cfg: DictConfig):
     if (comm.rank==0):
         print("\nTiming data:")
         sys.stdout.flush()
-    t_data.printTimeData(comm)
+    t_data.printTimeData(cfg, comm)
  
 
     # Exit
