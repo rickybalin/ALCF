@@ -10,7 +10,7 @@ import torch
 
 class timeStats:
     # General training metrics
-    t_tot = 0.0 # local time spent training (entire loop over epochs)
+    t_tot = 0.0 # local time spent training (loop over epochs, excluding first 2)
     t_train = 0.0 # local accumulated time spent in training loop
     tp_train = 0.0 # local accumulated training throughput
     i_train = 0 # local number of times training loop is called
@@ -32,15 +32,15 @@ class timeStats:
 
     # Compute min, max, mean and standard deviation across all processes for a time measure
     def computeStats_f(self, comm, var):
-        sum = comm.comm.allreduce(np.array(var),op=comm.sum)
-        avg = sum / comm.size
+        summ = comm.comm.allreduce(np.array(var),op=comm.sum)
+        avg = summ / comm.size
         tmp = np.array((var - avg)**2) 
         std = comm.comm.allreduce(tmp,op=comm.sum)
         std = std / comm.size
         std = math.sqrt(std)
         min_loc = comm.comm.allreduce((var,comm.rank),op=comm.minloc)
         max_loc = comm.comm.allreduce((var,comm.rank),op=comm.maxloc)
-        return avg, std, sum, [min_loc[0],min_loc[1]], [max_loc[0],max_loc[1]]
+        return avg, std, summ, [min_loc[0],min_loc[1]], [max_loc[0],max_loc[1]]
 
     # Compute min, max, mean and standard deviation across all processes for a counter
     def computeStats_i(self, comm, var):
@@ -54,40 +54,49 @@ class timeStats:
 
     # Print the timing data
     def printTimeData(self, cfg, comm):
-        # General training metrics
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.t_tot)
-        if comm.rank==0:
-            print(f"Total training time [s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.]\n")
         
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.t_train)
+        # General training metrics
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.t_tot)
         if comm.rank==0:
-            print(f"Total time spent in training loop [s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.]")
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.tp_train)
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}"
+            #stats_string_2 = f": min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.]"
+            print("Total training time (excluding first 2 epochs) [s] " + stats_string + "\n")
+        
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.t_train)
         if comm.rank==0:
-            print(f"Total training throughput [samples/s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.], sum [{sum:>8e},.]")
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}"
+            print("Total time spent in training loop [s] " + stats_string)
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.tp_train)
+        if comm.rank==0:
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}, sum = {summ:>8e}"
+            print("Total training throughput [samples/s] " + stats_string)
         avg, std = self.computeStats_i(comm, self.i_train)
         if comm.rank==0:
-            print(f"Number of train loops executed : min [.,.], max [.,.], avg [{avg},.], std [{std},.]\n")
+            print(f"Number of train loops executed : {avg}\n")
         
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.t_compMiniBatch)
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.t_compMiniBatch)
         if comm.rank==0:
-            print(f"Total time spent in batch computation [s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.]")
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.t_AveCompMiniBatch)
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}"
+            print(f"Total time spent in batch computation [s] " + stats_string)
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.t_AveCompMiniBatch)
         if comm.rank==0:
-            print(f"Average time for a single batch computation [s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.]")
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}"
+            print(f"Average time for a single batch computation [s] " + stats_string)
         avg, std = self.computeStats_i(comm, self.i_compMiniBatch)
         if comm.rank==0:
-            print(f"Number of batches computed : min [.,.], max [.,.], avg [{avg},.], std [{std},.]\n")
+            print(f"Number of batches computed : {avg}\n")
 
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.t_val)
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.t_val)
         if comm.rank==0:
-            print(f"Total time spent in validation loop [s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.]")
-        avg, std, sum, min_arr, max_arr = self.computeStats_f(comm, self.tp_val)
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}"
+            print(f"Total time spent in validation loop [s] " + stats_string)
+        avg, std, summ, min_arr, max_arr = self.computeStats_f(comm, self.tp_val)
         if comm.rank==0:
-            print(f"Total validation throughput [samples/s] : min [{min_arr[0]:>8e},{min_arr[1]:>d}], max [{max_arr[0]:>8e},{max_arr[1]:>d}], avg [{avg:>8e},.], std [{std:>8e},.], sum [{sum:>8e},.]")
+            stats_string = f": min = {min_arr[0]:>8e} , max = {max_arr[0]:>8e} , avg = {avg:>8e} , std = {std:>8e}, sum = {summ:>8e}"
+            print(f"Total validation throughput [samples/s] " + stats_string)
         avg, std = self.computeStats_i(comm, self.i_val)
         if comm.rank==0:
-            print(f"Number of validation loops executed : min [.,.], max [.,.], avg [{avg},.], std [{std},.]\n")
+            print(f"Number of validation loops executed : {avg}\n")
 
         # Online training metrics
         if cfg.database.launch:

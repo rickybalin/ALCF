@@ -46,7 +46,7 @@ train:
     executable: "" # string - path to ML training executable
     data_path: "synthetic" # string, synthetic - path to training data to load
     model: "sgs" # sgs, qcnn-3d - model ID
-    channels: 1 # integer - channels for QCNN model
+    channels: 4 # integer - channels for QCNN model
     qcnn_config: "" # string - path to config file for QCNN model
     distributed: "ddp" # horovod, ddp - distributed training library
     device: "cuda" # cpu, cuda, xpu - device to train on
