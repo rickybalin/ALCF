@@ -20,7 +20,7 @@ def pt_read_tf(device):
     t_ary[0] = -5.0
     #print(f"TF: {tf_ary}", f"PT: {t_ary}")
     assert "XPU" in tf_ary.device, "TensorFlow tensor not on XPU"
-    assert t_ary.device.type == "xpu", "PyTorch tensot not on XPU"
+    assert t_ary.device.type == "xpu", "PyTorch tensor not on XPU"
     np.testing.assert_equal(actual=tf_ary.numpy(), desired=t_ary.cpu().numpy())
     #print("PyTorch reads a TensorFlow tensor\n")
     return 0
@@ -31,11 +31,12 @@ def tf_read_pt(device):
     """
     t_ary = torch.arange(4).to(device)
     dlcapsule = torch.utils.dlpack.to_dlpack(t_ary)
-    tf_ary = tf.experimental.dlpack.from_dlpack(dlcapsule)
+    with tf.device('/device:XPU:0'):
+        tf_ary = tf.experimental.dlpack.from_dlpack(dlcapsule)
     t_ary[0] = -6.0
     #print(f"TF: {tf_ary}", f"PT: {t_ary}")
     assert "XPU" in tf_ary.device, "TensorFlow tensor not on XPU"
-    assert t_ary.device.type == "xpu", "PyTorch tensot not on XPU"
+    assert t_ary.device.type == "xpu", "PyTorch tensor not on XPU"
     np.testing.assert_equal(actual=tf_ary.numpy(), desired=t_ary.cpu().numpy())
     #print("TesorFlow reads a PyTorch tensor on the XPU\n")
     return 0
