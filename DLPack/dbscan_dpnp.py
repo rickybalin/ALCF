@@ -16,7 +16,7 @@ print(f"Created DPNP array on device {X.device}")
 try: 
     with config_context(target_offload="gpu:0"):
         pred = DBSCAN(eps=3, min_samples=2).fit_predict(X)
-    #print(f"Output prediction device {pred.device}")
+    print(f"Output prediction device {pred.device}")
     print("DPNP interop. pass \n")
 except Exception as err:
     print("DPNP interop. error:")
