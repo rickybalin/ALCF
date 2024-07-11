@@ -17,8 +17,9 @@ def pt_read_tf(device):
         tf_ary = tf.range(4)
         dlcapsule = tf.experimental.dlpack.to_dlpack(tf_ary)
         t_ary = torch.from_dlpack(dlcapsule)
-    t_ary[0] = -5.0
-    #print(f"TF: {tf_ary}", f"PT: {t_ary}")
+        t_ary[0] = -5.0
+        print(f"TF: {tf_ary}", f"PT: {t_ary}")
+        print(t_ary.device.type)
     assert "XPU" in tf_ary.device, "TensorFlow tensor not on XPU"
     assert t_ary.device.type == "xpu", "PyTorch tensor not on XPU"
     np.testing.assert_equal(actual=tf_ary.numpy(), desired=t_ary.cpu().numpy())

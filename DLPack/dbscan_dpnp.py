@@ -29,10 +29,12 @@ X = dpt.asarray([[1., 2.], [2., 2.], [2., 3.],
             [8., 7.], [8., 8.], [25., 80.]], dtype=dpt.float32)
 print(f"Created DPCTL array on device {X.device}")
 try: 
-    with sycl_context("gpu:0"):
+    #with sycl_context("gpu:0"):
+    with config_context(target_offload="gpu:0"):
         clustering = DBSCAN(eps=3, min_samples=2).fit(X)
-        pred = DBSCAN(eps=3, min_samples=2).fit_predict(X)
-    #print(f"Output clustering device {clustering.labels_.device}")
+        labels = clustering.labels_
+        #pred = clustering.predict(X)
+    print(f"Output clustering device {labels.device}")
     print("DPCTL interop. pass \n")
 except Exception as err:
     print("DPCTL interop. error:")
