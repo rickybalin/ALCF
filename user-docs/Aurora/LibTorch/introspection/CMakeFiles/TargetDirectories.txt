@@ -1,3 +1,0 @@
-/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/exe.dir
-/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/edit_cache.dir
-/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/rebuild_cache.dir
