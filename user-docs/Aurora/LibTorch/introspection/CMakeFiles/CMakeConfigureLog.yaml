@@ -1,0 +1,760 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Linux - 5.14.21-150400.24.55-default - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /opt/aurora/24.180.1/oneapi/compiler/latest/bin/icx 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is IntelLLVM, found in:
+        /flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/3.27.5/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /opt/aurora/24.180.1/oneapi/compiler/latest/bin/icpx 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is IntelLLVM, found in:
+        /flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/3.27.5/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9"
+      binary: "/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9'
+        
+        Run Build Command(s): /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6ace3/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6ace3.dir/build.make CMakeFiles/cmTC_6ace3.dir/build
+        gmake[1]: Entering directory '/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9'
+        Building C object CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o
+        /opt/aurora/24.180.1/oneapi/compiler/latest/bin/icx   -v -MD -MT CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -c /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCCompilerABI.c
+        Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler
+        Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icx.cfg
+        Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/clang" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -fveclib=SVML -faltmathlib=SVMLAltMathLibrary -mframe-pointer=none -fapprox-func -funsafe-math-optimizations -fno-signed-zeros -mreassociate -freciprocal-math -fdenormal-fp-math=preserve-sign,preserve-sign -ffp-contract=fast -fno-rounding-math -complex-range=promoted -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -mllvm -x86-enable-unaligned-vector-move=true -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9 -v -fcoverage-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9 -fclang-abi-compat=17 -resource-dir /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19 -dependency-file CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -sys-header-deps -I/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include -I/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include -I/opt/aurora/24.180.1/oneapi/ipp/latest/include -I/opt/aurora/24.180.1/oneapi/ippcp/latest/include -I/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include -I/opt/aurora/24.180.1/oneapi/dpl/latest/include -I/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include -I/opt/aurora/24.180.1/oneapi/dal/latest/include/dal -I/opt/aurora/24.180.1/oneapi/dnnl/latest/include -I/opt/aurora/24.180.1/oneapi/tbb/latest/include -I/opt/aurora/24.180.1/oneapi/mkl/latest/include -I/opt/aurora/24.180.1/oneapi/compiler/latest/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -I/opt/aurora/24.180.1/support/libraries/khronos/default/include -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -O2 -ferror-limit 19 -fheinous-gnu-extensions -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -vectorize-loops -vectorize-slp -mllvm -disable-hir-generate-mkl-call -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -intel-abi-compatible=true -D__GCC_HAVE_DWARF2_CFI_ASM=1 -fintel-compatibility -fintel-libirc-allowed -fintel-libimf-allowed -o CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -x c /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 19.0.0 based upon LLVM 19.0.0 default target x86_64-unknown-linux-gnu
+        ignoring nonexistent directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        ignoring nonexistent directory "/include"
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include"
+          as it is a non-system directory that duplicates a system directory
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include"
+          as it is a non-system directory that duplicates a system directory
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include"
+          as it is a non-system directory that duplicates a system directory
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include"
+          as it is a non-system directory that duplicates a system directory
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include
+         /opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include
+         /opt/aurora/24.180.1/oneapi/ipp/latest/include
+         /opt/aurora/24.180.1/oneapi/ippcp/latest/include
+         /opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include
+         /opt/aurora/24.180.1/oneapi/dpl/latest/include
+         /opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include
+         /opt/aurora/24.180.1/oneapi/dal/latest/include/dal
+         /opt/aurora/24.180.1/oneapi/dnnl/latest/include
+         /opt/aurora/24.180.1/oneapi/tbb/latest/include
+         /opt/aurora/24.180.1/oneapi/mkl/latest/include
+         /opt/aurora/24.180.1/oneapi/compiler/latest/include
+         /opt/aurora/24.180.1/support/libraries/khronos/default/include
+         /opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero
+         /opt/aurora/24.180.1/intel-gpu-umd/996.26/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include
+         /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include
+         /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include
+         /usr/local/include
+         /usr/include
+        End of search list.
+        Linking C executable cmTC_6ace3
+        /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ace3.dir/link.txt --verbose=1
+        /opt/aurora/24.180.1/oneapi/compiler/latest/bin/icx  -v CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -o cmTC_6ace3 
+        Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler
+        Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icx.cfg
+        Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/usr/bin/ld" -z relro --hash-style=both --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_6ace3 /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib -L/lib -L/usr/lib -L/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib -L/opt/aurora/24.180.1/oneapi/ipp/latest/lib -L/opt/aurora/24.180.1/oneapi/ippcp/latest/lib -L/opt/aurora/24.180.1/oneapi/dpl/latest/lib -L/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib -L/opt/aurora/24.180.1/oneapi/dal/latest/lib -L/opt/aurora/24.180.1/oneapi/dnnl/latest/lib -L/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8 -L/opt/aurora/24.180.1/oneapi/mkl/latest/lib -L/opt/aurora/24.180.1/oneapi/compiler/latest/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib -L/opt/aurora/24.180.1/support/libraries/khronos/default/lib64 -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64 CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -Bstatic -lsvml -Bdynamic -Bstatic -lirng -Bdynamic -Bstatic -limf -Bdynamic -lm -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc -Bdynamic -ldl -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc_s -Bdynamic /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        gmake[1]: Leaving directory '/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include]
+          add: [/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include]
+          add: [/opt/aurora/24.180.1/oneapi/ipp/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/ippcp/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/dpl/latest/include]
+          add: [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include]
+          add: [/opt/aurora/24.180.1/oneapi/dal/latest/include/dal]
+          add: [/opt/aurora/24.180.1/oneapi/dnnl/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/tbb/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/mkl/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/compiler/latest/include]
+          add: [/opt/aurora/24.180.1/support/libraries/khronos/default/include]
+          add: [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero]
+          add: [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include]
+          add: [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include]
+          add: [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include]
+          add: [/usr/local/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include] ==> [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include]
+        collapse include dir [/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include] ==> [/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/ipp/latest/include] ==> [/opt/aurora/24.180.1/oneapi/ipp/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/ippcp/latest/include] ==> [/opt/aurora/24.180.1/oneapi/ippcp/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include] ==> [/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dpl/latest/include] ==> [/opt/aurora/24.180.1/oneapi/dpl/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include] ==> [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dal/latest/include/dal] ==> [/opt/aurora/24.180.1/oneapi/dal/latest/include/dal]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dnnl/latest/include] ==> [/opt/aurora/24.180.1/oneapi/dnnl/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/tbb/latest/include] ==> [/opt/aurora/24.180.1/oneapi/tbb/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/mkl/latest/include] ==> [/opt/aurora/24.180.1/oneapi/mkl/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/compiler/latest/include] ==> [/opt/aurora/24.180.1/oneapi/compiler/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/support/libraries/khronos/default/include] ==> [/opt/aurora/24.180.1/support/libraries/khronos/default/include]
+        collapse include dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero]
+        collapse include dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include;/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include;/opt/aurora/24.180.1/oneapi/ipp/latest/include;/opt/aurora/24.180.1/oneapi/ippcp/latest/include;/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include;/opt/aurora/24.180.1/oneapi/dpl/latest/include;/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include;/opt/aurora/24.180.1/oneapi/dal/latest/include/dal;/opt/aurora/24.180.1/oneapi/dnnl/latest/include;/opt/aurora/24.180.1/oneapi/tbb/latest/include;/opt/aurora/24.180.1/oneapi/mkl/latest/include;/opt/aurora/24.180.1/oneapi/compiler/latest/include;/opt/aurora/24.180.1/support/libraries/khronos/default/include;/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero;/opt/aurora/24.180.1/intel-gpu-umd/996.26/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include;/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/include;/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include;/usr/local/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6ace3/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_6ace3.dir/build.make CMakeFiles/cmTC_6ace3.dir/build]
+        ignore line: [gmake[1]: Entering directory '/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9']
+        ignore line: [Building C object CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/opt/aurora/24.180.1/oneapi/compiler/latest/bin/icx   -v -MD -MT CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -c /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCCompilerABI.c]
+        ignore line: [Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler]
+        ignore line: [Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icx.cfg]
+        ignore line: [Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/clang" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -fveclib=SVML -faltmathlib=SVMLAltMathLibrary -mframe-pointer=none -fapprox-func -funsafe-math-optimizations -fno-signed-zeros -mreassociate -freciprocal-math -fdenormal-fp-math=preserve-sign preserve-sign -ffp-contract=fast -fno-rounding-math -complex-range=promoted -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -mllvm -x86-enable-unaligned-vector-move=true -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9 -v -fcoverage-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-ioPgs9 -fclang-abi-compat=17 -resource-dir /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19 -dependency-file CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -sys-header-deps -I/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include -I/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include -I/opt/aurora/24.180.1/oneapi/ipp/latest/include -I/opt/aurora/24.180.1/oneapi/ippcp/latest/include -I/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include -I/opt/aurora/24.180.1/oneapi/dpl/latest/include -I/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include -I/opt/aurora/24.180.1/oneapi/dal/latest/include/dal -I/opt/aurora/24.180.1/oneapi/dnnl/latest/include -I/opt/aurora/24.180.1/oneapi/tbb/latest/include -I/opt/aurora/24.180.1/oneapi/mkl/latest/include -I/opt/aurora/24.180.1/oneapi/compiler/latest/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -I/opt/aurora/24.180.1/support/libraries/khronos/default/include -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -O2 -ferror-limit 19 -fheinous-gnu-extensions -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -vectorize-loops -vectorize-slp -mllvm -disable-hir-generate-mkl-call -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -intel-abi-compatible=true -D__GCC_HAVE_DWARF2_CFI_ASM=1 -fintel-compatibility -fintel-libirc-allowed -fintel-libimf-allowed -o CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -x c /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 19.0.0 based upon LLVM 19.0.0 default target x86_64-unknown-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/include"]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include]
+        ignore line: [ /opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/ipp/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/ippcp/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dpl/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dal/latest/include/dal]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dnnl/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/tbb/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/mkl/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/compiler/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/support/libraries/khronos/default/include]
+        ignore line: [ /opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero]
+        ignore line: [ /opt/aurora/24.180.1/intel-gpu-umd/996.26/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_6ace3]
+        ignore line: [/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ace3.dir/link.txt --verbose=1]
+        ignore line: [/opt/aurora/24.180.1/oneapi/compiler/latest/bin/icx  -v CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -o cmTC_6ace3 ]
+        ignore line: [Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler]
+        ignore line: [Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icx.cfg]
+        ignore line: [Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/usr/bin/ld" -z relro --hash-style=both --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_6ace3 /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib -L/lib -L/usr/lib -L/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib -L/opt/aurora/24.180.1/oneapi/ipp/latest/lib -L/opt/aurora/24.180.1/oneapi/ippcp/latest/lib -L/opt/aurora/24.180.1/oneapi/dpl/latest/lib -L/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib -L/opt/aurora/24.180.1/oneapi/dal/latest/lib -L/opt/aurora/24.180.1/oneapi/dnnl/latest/lib -L/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8 -L/opt/aurora/24.180.1/oneapi/mkl/latest/lib -L/opt/aurora/24.180.1/oneapi/compiler/latest/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib -L/opt/aurora/24.180.1/support/libraries/khronos/default/lib64 -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64 CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o -Bstatic -lsvml -Bdynamic -Bstatic -lirng -Bdynamic -Bstatic -limf -Bdynamic -lm -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc -Bdynamic -ldl -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed -Bstatic -lirc_s -Bdynamic /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [--hash-style=both] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_6ace3] ==> ignore
+          arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
+          arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
+          arg [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-L/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib] ==> dir [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/ipp/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/ipp/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/ippcp/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/ippcp/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/dpl/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/dpl/latest/lib]
+          arg [-L/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib] ==> dir [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/dal/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/dal/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/dnnl/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/dnnl/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8] ==> dir [/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8]
+          arg [-L/opt/aurora/24.180.1/oneapi/mkl/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/mkl/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/latest/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib]
+          arg [-L/opt/aurora/24.180.1/support/libraries/khronos/default/lib64] ==> dir [/opt/aurora/24.180.1/support/libraries/khronos/default/lib64]
+          arg [-L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl] ==> dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl]
+          arg [-L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64] ==> dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64]
+          arg [CMakeFiles/cmTC_6ace3.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-Bstatic] ==> search static
+          arg [-lsvml] ==> lib [svml]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-Bstatic] ==> search static
+          arg [-lirng] ==> lib [irng]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-Bstatic] ==> search static
+          arg [-limf] ==> lib [imf]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-lm] ==> lib [m]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-Bstatic] ==> search static
+          arg [-lirc] ==> lib [irc]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-ldl] ==> lib [dl]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-Bstatic] ==> search static
+          arg [-lirc_s] ==> lib [irc_s]
+          arg [-Bdynamic] ==> search dynamic
+          arg [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+          arg [/usr/lib/../lib64/crtn.o] ==> obj [/usr/lib/../lib64/crtn.o]
+        collapse obj [/usr/lib/../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib/../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib/../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/lib]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        collapse library dir [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib] ==> [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/ipp/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/ipp/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/ippcp/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/ippcp/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/dpl/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/dpl/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib] ==> [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/dal/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/dal/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/dnnl/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/dnnl/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8] ==> [/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/mkl/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/mkl/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib]
+        collapse library dir [/opt/aurora/24.180.1/support/libraries/khronos/default/lib64] ==> [/opt/aurora/24.180.1/support/libraries/khronos/default/lib64]
+        collapse library dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl]
+        collapse library dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64]
+        implicit libs: [svml;irng;imf;m;gcc;gcc_s;irc;dl;gcc;gcc_s;c;gcc;gcc_s;irc_s]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib;/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64;/lib64;/usr/lib64;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib;/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/lib;/lib;/usr/lib;/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib;/opt/aurora/24.180.1/oneapi/ipp/latest/lib;/opt/aurora/24.180.1/oneapi/ippcp/latest/lib;/opt/aurora/24.180.1/oneapi/dpl/latest/lib;/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib;/opt/aurora/24.180.1/oneapi/dal/latest/lib;/opt/aurora/24.180.1/oneapi/dnnl/latest/lib;/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8;/opt/aurora/24.180.1/oneapi/mkl/latest/lib;/opt/aurora/24.180.1/oneapi/compiler/latest/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib;/opt/aurora/24.180.1/support/libraries/khronos/default/lib64;/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl;/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a"
+      binary: "/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a'
+        
+        Run Build Command(s): /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c2680/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c2680.dir/build.make CMakeFiles/cmTC_c2680.dir/build
+        gmake[1]: Entering directory '/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a'
+        Building CXX object CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o
+        /opt/aurora/24.180.1/oneapi/compiler/latest/bin/icpx   -v -MD -MT CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -c /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp
+        Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler
+        Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icpx.cfg
+        Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/clang" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -fveclib=SVML -faltmathlib=SVMLAltMathLibrary -mframe-pointer=none -fapprox-func -funsafe-math-optimizations -fno-signed-zeros -mreassociate -freciprocal-math -fdenormal-fp-math=preserve-sign,preserve-sign -ffp-contract=fast -fno-rounding-math -complex-range=promoted -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -mllvm -x86-enable-unaligned-vector-move=true -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a -v -fcoverage-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a -fclang-abi-compat=17 -resource-dir /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19 -dependency-file CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -I/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include -I/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include -I/opt/aurora/24.180.1/oneapi/ipp/latest/include -I/opt/aurora/24.180.1/oneapi/ippcp/latest/include -I/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include -I/opt/aurora/24.180.1/oneapi/dpl/latest/include -I/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include -I/opt/aurora/24.180.1/oneapi/dal/latest/include/dal -I/opt/aurora/24.180.1/oneapi/dnnl/latest/include -I/opt/aurora/24.180.1/oneapi/tbb/latest/include -I/opt/aurora/24.180.1/oneapi/mkl/latest/include -I/opt/aurora/24.180.1/oneapi/compiler/latest/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -I/opt/aurora/24.180.1/support/libraries/khronos/default/include -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0 -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -O2 -fdeprecated-macro -ferror-limit 19 -fheinous-gnu-extensions -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -vectorize-loops -vectorize-slp -mllvm -disable-hir-generate-mkl-call -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -intel-abi-compatible=true -D__GCC_HAVE_DWARF2_CFI_ASM=1 -fintel-compatibility -fintel-libirc-allowed -fintel-libimf-allowed -o CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 19.0.0 based upon LLVM 19.0.0 default target x86_64-unknown-linux-gnu
+        ignoring nonexistent directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        ignoring nonexistent directory "/include"
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include"
+          as it is a non-system directory that duplicates a system directory
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include"
+          as it is a non-system directory that duplicates a system directory
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include"
+          as it is a non-system directory that duplicates a system directory
+        ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include"
+          as it is a non-system directory that duplicates a system directory
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include
+         /opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include
+         /opt/aurora/24.180.1/oneapi/ipp/latest/include
+         /opt/aurora/24.180.1/oneapi/ippcp/latest/include
+         /opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include
+         /opt/aurora/24.180.1/oneapi/dpl/latest/include
+         /opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include
+         /opt/aurora/24.180.1/oneapi/dal/latest/include/dal
+         /opt/aurora/24.180.1/oneapi/dnnl/latest/include
+         /opt/aurora/24.180.1/oneapi/tbb/latest/include
+         /opt/aurora/24.180.1/oneapi/mkl/latest/include
+         /opt/aurora/24.180.1/oneapi/compiler/latest/include
+         /opt/aurora/24.180.1/support/libraries/khronos/default/include
+         /opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero
+         /opt/aurora/24.180.1/intel-gpu-umd/996.26/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include
+         /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu
+         /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward
+         /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include
+         /usr/local/include
+         /usr/include
+        End of search list.
+        Linking CXX executable cmTC_c2680
+        /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2680.dir/link.txt --verbose=1
+        /opt/aurora/24.180.1/oneapi/compiler/latest/bin/icpx  -v CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_c2680 
+        Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler
+        Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icpx.cfg
+        Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/usr/bin/ld" -z relro --hash-style=both --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c2680 /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib -L/lib -L/usr/lib -L/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib -L/opt/aurora/24.180.1/oneapi/ipp/latest/lib -L/opt/aurora/24.180.1/oneapi/ippcp/latest/lib -L/opt/aurora/24.180.1/oneapi/dpl/latest/lib -L/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib -L/opt/aurora/24.180.1/oneapi/dal/latest/lib -L/opt/aurora/24.180.1/oneapi/dnnl/latest/lib -L/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8 -L/opt/aurora/24.180.1/oneapi/mkl/latest/lib -L/opt/aurora/24.180.1/oneapi/compiler/latest/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib -L/opt/aurora/24.180.1/support/libraries/khronos/default/lib64 -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64 CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lsvml -Bdynamic -Bstatic -lirng -Bdynamic -lstdc++ -Bstatic -limf -Bdynamic -lm -lgcc_s -lgcc -Bstatic -lirc -Bdynamic -ldl -lgcc_s -lgcc -lc -lgcc_s -lgcc -Bstatic -lirc_s -Bdynamic /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        gmake[1]: Leaving directory '/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include]
+          add: [/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include]
+          add: [/opt/aurora/24.180.1/oneapi/ipp/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/ippcp/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/dpl/latest/include]
+          add: [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include]
+          add: [/opt/aurora/24.180.1/oneapi/dal/latest/include/dal]
+          add: [/opt/aurora/24.180.1/oneapi/dnnl/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/tbb/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/mkl/latest/include]
+          add: [/opt/aurora/24.180.1/oneapi/compiler/latest/include]
+          add: [/opt/aurora/24.180.1/support/libraries/khronos/default/include]
+          add: [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero]
+          add: [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include]
+          add: [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+          add: [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+          add: [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include]
+          add: [/usr/local/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include] ==> [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include]
+        collapse include dir [/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include] ==> [/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/ipp/latest/include] ==> [/opt/aurora/24.180.1/oneapi/ipp/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/ippcp/latest/include] ==> [/opt/aurora/24.180.1/oneapi/ippcp/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include] ==> [/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dpl/latest/include] ==> [/opt/aurora/24.180.1/oneapi/dpl/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include] ==> [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dal/latest/include/dal] ==> [/opt/aurora/24.180.1/oneapi/dal/latest/include/dal]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/dnnl/latest/include] ==> [/opt/aurora/24.180.1/oneapi/dnnl/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/tbb/latest/include] ==> [/opt/aurora/24.180.1/oneapi/tbb/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/mkl/latest/include] ==> [/opt/aurora/24.180.1/oneapi/mkl/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/compiler/latest/include] ==> [/opt/aurora/24.180.1/oneapi/compiler/latest/include]
+        collapse include dir [/opt/aurora/24.180.1/support/libraries/khronos/default/include] ==> [/opt/aurora/24.180.1/support/libraries/khronos/default/include]
+        collapse include dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero]
+        collapse include dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/include]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include/c++/12.2.0]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include/c++/12.2.0/x86_64-pc-linux-gnu]
+        collapse include dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include/c++/12.2.0/backward]
+        collapse include dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include;/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include;/opt/aurora/24.180.1/oneapi/ipp/latest/include;/opt/aurora/24.180.1/oneapi/ippcp/latest/include;/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include;/opt/aurora/24.180.1/oneapi/dpl/latest/include;/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include;/opt/aurora/24.180.1/oneapi/dal/latest/include/dal;/opt/aurora/24.180.1/oneapi/dnnl/latest/include;/opt/aurora/24.180.1/oneapi/tbb/latest/include;/opt/aurora/24.180.1/oneapi/mkl/latest/include;/opt/aurora/24.180.1/oneapi/compiler/latest/include;/opt/aurora/24.180.1/support/libraries/khronos/default/include;/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero;/opt/aurora/24.180.1/intel-gpu-umd/996.26/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include;/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/include;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include/c++/12.2.0;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include/c++/12.2.0/x86_64-pc-linux-gnu;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include/c++/12.2.0/backward;/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include;/usr/local/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/flare/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c2680/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_c2680.dir/build.make CMakeFiles/cmTC_c2680.dir/build]
+        ignore line: [gmake[1]: Entering directory '/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a']
+        ignore line: [Building CXX object CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/opt/aurora/24.180.1/oneapi/compiler/latest/bin/icpx   -v -MD -MT CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -c /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler]
+        ignore line: [Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icpx.cfg]
+        ignore line: [Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/clang" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -fveclib=SVML -faltmathlib=SVMLAltMathLibrary -mframe-pointer=none -fapprox-func -funsafe-math-optimizations -fno-signed-zeros -mreassociate -freciprocal-math -fdenormal-fp-math=preserve-sign preserve-sign -ffp-contract=fast -fno-rounding-math -complex-range=promoted -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -mllvm -x86-enable-unaligned-vector-move=true -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a -v -fcoverage-compilation-dir=/lus/flare/projects/Aurora_deployment/balin/libtorch/user_docs/introspection/CMakeFiles/CMakeScratch/TryCompile-4m9B2a -fclang-abi-compat=17 -resource-dir /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19 -dependency-file CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -I/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include -I/opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include -I/opt/aurora/24.180.1/oneapi/ipp/latest/include -I/opt/aurora/24.180.1/oneapi/ippcp/latest/include -I/opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include -I/opt/aurora/24.180.1/oneapi/dpl/latest/include -I/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include -I/opt/aurora/24.180.1/oneapi/dal/latest/include/dal -I/opt/aurora/24.180.1/oneapi/dnnl/latest/include -I/opt/aurora/24.180.1/oneapi/tbb/latest/include -I/opt/aurora/24.180.1/oneapi/mkl/latest/include -I/opt/aurora/24.180.1/oneapi/compiler/latest/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -I/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -I/opt/aurora/24.180.1/support/libraries/khronos/default/include -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero -I/opt/aurora/24.180.1/intel-gpu-umd/996.26/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -c-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include -cxx-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0 -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward -internal-isystem /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include -internal-isystem /usr/local/include -internal-isystem /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -O2 -fdeprecated-macro -ferror-limit 19 -fheinous-gnu-extensions -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -vectorize-loops -vectorize-slp -mllvm -disable-hir-generate-mkl-call -mllvm -loopopt=1 -floopopt-pipeline=light -mllvm -intel-abi-compatible=true -D__GCC_HAVE_DWARF2_CFI_ASM=1 -fintel-compatibility -fintel-libirc-allowed -fintel-libimf-allowed -o CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 19.0.0 based upon LLVM 19.0.0 default target x86_64-unknown-linux-gnu]
+        ignore line: [ignoring nonexistent directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [ignoring nonexistent directory "/include"]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [ignoring duplicate directory "/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/include]
+        ignore line: [ /opt/aurora/24.180.1/support/tools/pti-gpu/063214e/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/ipp/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/ippcp/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dpcpp-ct/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dpl/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dal/latest/include/dal]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/dnnl/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/tbb/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/mkl/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/compiler/latest/include]
+        ignore line: [ /opt/aurora/24.180.1/support/libraries/khronos/default/include]
+        ignore line: [ /opt/aurora/24.180.1/intel-gpu-umd/996.26/include/level_zero]
+        ignore line: [ /opt/aurora/24.180.1/intel-gpu-umd/996.26/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/include]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/include]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+        ignore line: [ /opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_c2680]
+        ignore line: [/opt/aurora/24.180.1/frameworks/aurora_nre_models_frameworks-2024.2.1_u1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2680.dir/link.txt --verbose=1]
+        ignore line: [/opt/aurora/24.180.1/oneapi/compiler/latest/bin/icpx  -v CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_c2680 ]
+        ignore line: [Intel(R) oneAPI DPC++/C++ Compiler 2024.2.1 (2024.2.1.20240711)]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler]
+        ignore line: [Configuration file: /opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../icpx.cfg]
+        ignore line: [Found candidate GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Selected GCC installation: /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/usr/bin/ld" -z relro --hash-style=both --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c2680 /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib -L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib -L/lib -L/usr/lib -L/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib -L/opt/aurora/24.180.1/oneapi/ipp/latest/lib -L/opt/aurora/24.180.1/oneapi/ippcp/latest/lib -L/opt/aurora/24.180.1/oneapi/dpl/latest/lib -L/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib -L/opt/aurora/24.180.1/oneapi/dal/latest/lib -L/opt/aurora/24.180.1/oneapi/dnnl/latest/lib -L/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8 -L/opt/aurora/24.180.1/oneapi/mkl/latest/lib -L/opt/aurora/24.180.1/oneapi/compiler/latest/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64 -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib -L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib -L/opt/aurora/24.180.1/support/libraries/khronos/default/lib64 -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl -L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64 CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lsvml -Bdynamic -Bstatic -lirng -Bdynamic -lstdc++ -Bstatic -limf -Bdynamic -lm -lgcc_s -lgcc -Bstatic -lirc -Bdynamic -ldl -lgcc_s -lgcc -lc -lgcc_s -lgcc -Bstatic -lirc_s -Bdynamic /opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [--hash-style=both] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_c2680] ==> ignore
+          arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
+          arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
+          arg [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-L/usr/lib] ==> dir [/usr/lib]
+          arg [-L/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib] ==> dir [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/ipp/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/ipp/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/ippcp/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/ippcp/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/dpl/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/dpl/latest/lib]
+          arg [-L/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib] ==> dir [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/dal/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/dal/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/dnnl/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/dnnl/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8] ==> dir [/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8]
+          arg [-L/opt/aurora/24.180.1/oneapi/mkl/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/mkl/latest/lib]
+          arg [-L/opt/aurora/24.180.1/oneapi/compiler/latest/lib] ==> dir [/opt/aurora/24.180.1/oneapi/compiler/latest/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib]
+          arg [-L/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib] ==> dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib]
+          arg [-L/opt/aurora/24.180.1/support/libraries/khronos/default/lib64] ==> dir [/opt/aurora/24.180.1/support/libraries/khronos/default/lib64]
+          arg [-L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl] ==> dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl]
+          arg [-L/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64] ==> dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64]
+          arg [CMakeFiles/cmTC_c2680.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-Bstatic] ==> search static
+          arg [-lsvml] ==> lib [svml]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-Bstatic] ==> search static
+          arg [-lirng] ==> lib [irng]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-Bstatic] ==> search static
+          arg [-limf] ==> lib [imf]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-Bstatic] ==> search static
+          arg [-lirc] ==> lib [irc]
+          arg [-Bdynamic] ==> search dynamic
+          arg [-ldl] ==> lib [dl]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-Bstatic] ==> search static
+          arg [-lirc_s] ==> lib [irc_s]
+          arg [-Bdynamic] ==> search dynamic
+          arg [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+          arg [/usr/lib/../lib64/crtn.o] ==> obj [/usr/lib/../lib64/crtn.o]
+        collapse obj [/usr/lib/../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib/../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib/../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/2024.2/bin/compiler/../../opt/compiler/lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/lib]
+        collapse library dir [/lib] ==> [/lib]
+        collapse library dir [/usr/lib] ==> [/usr/lib]
+        collapse library dir [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib] ==> [/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/ipp/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/ipp/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/ippcp/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/ippcp/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/dpl/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/dpl/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib] ==> [/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/dal/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/dal/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/dnnl/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/dnnl/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8] ==> [/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/mkl/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/mkl/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/oneapi/compiler/latest/lib] ==> [/opt/aurora/24.180.1/oneapi/compiler/latest/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib]
+        collapse library dir [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib] ==> [/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib]
+        collapse library dir [/opt/aurora/24.180.1/support/libraries/khronos/default/lib64] ==> [/opt/aurora/24.180.1/support/libraries/khronos/default/lib64]
+        collapse library dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl]
+        collapse library dir [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64] ==> [/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64]
+        implicit libs: [svml;irng;stdc++;imf;m;gcc_s;gcc;irc;dl;gcc_s;gcc;c;gcc_s;gcc;irc_s]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib;/opt/aurora/24.180.1/oneapi/compiler/2024.2/lib/clang/19/lib/x86_64-unknown-linux-gnu;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib64;/lib64;/usr/lib64;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-zt4lle2/lib;/opt/aurora/24.180.1/oneapi/compiler/2024.2/opt/compiler/lib;/lib;/usr/lib;/opt/aurora/24.180.1/CNDA/mpich/20240717/mpich-ofi-all-icc-default-pmix-gpu-drop20240717/lib;/opt/aurora/24.180.1/oneapi/ipp/latest/lib;/opt/aurora/24.180.1/oneapi/ippcp/latest/lib;/opt/aurora/24.180.1/oneapi/dpl/latest/lib;/opt/aurora/24.180.1/CNDA/oneapi/ccl/2021.13.1_20240808.145507/lib;/opt/aurora/24.180.1/oneapi/dal/latest/lib;/opt/aurora/24.180.1/oneapi/dnnl/latest/lib;/opt/aurora/24.180.1/oneapi/tbb/latest/lib/intel64/gcc4.8;/opt/aurora/24.180.1/oneapi/mkl/latest/lib;/opt/aurora/24.180.1/oneapi/compiler/latest/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpc-1.3.1-ygprpb4/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/mpfr-4.2.1-fhgnwe7/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gmp-6.2.1-yctcuid/lib;/opt/aurora/24.180.1/spack/unified/0.8.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-runtime-12.2.0-267awrk/lib;/opt/aurora/24.180.1/support/libraries/khronos/default/lib64;/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64/intel-opencl;/opt/aurora/24.180.1/intel-gpu-umd/996.26/lib64]
+        implicit fwks: []
+      
+      
+...

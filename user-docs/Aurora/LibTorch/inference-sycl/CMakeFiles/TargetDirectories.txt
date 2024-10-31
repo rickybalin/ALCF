@@ -1,0 +1,3 @@
+/flare/Aurora_deployment/balin/libtorch/user_docs/inference-sycl/CMakeFiles/exe.dir
+/flare/Aurora_deployment/balin/libtorch/user_docs/inference-sycl/CMakeFiles/edit_cache.dir
+/flare/Aurora_deployment/balin/libtorch/user_docs/inference-sycl/CMakeFiles/rebuild_cache.dir
